@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Home Depot × Stripe — 2026 Executive Engagement Plan</title>
+<title>Internal Briefing Doc — Stripe prep for The Home Depot EBC</title>
 <style id="embedded-fonts">
 @font-face {
   font-family: 'Fraunces';
@@ -85,1010 +85,259 @@
 </style>
 <style>
   :root{
-    --paper:#F1E9DA;
-    --paper-2:#E8DCC6;
-    --paper-3:#DFCFB2;
-    --ink:#211E17;
-    --ink-soft:#5C5443;
-    --ink-faint:rgba(33,30,23,.55);
-    --amber:#BC4E1B;
-    --amber-bright:#DD7126;
-    --pine:#2B4A3A;
-    --pine-soft:#3C5E4C;
-    --line:rgba(33,30,23,.14);
-    --line-2:rgba(33,30,23,.07);
-    --maxw:1160px;
-    --ease:cubic-bezier(.22,.61,.36,1);
+    --paper:#F1E9DA;--paper-2:#E8DCC6;--paper-3:#DFCFB2;
+    --ink:#211E17;--ink-soft:#5C5443;--ink-faint:rgba(33,30,23,.55);
+    --amber:#BC4E1B;--amber-bright:#DD7126;--pine:#2B4A3A;--pine-soft:#3C5E4C;
+    --line:rgba(33,30,23,.14);--line-2:rgba(33,30,23,.07);
+    --maxw:980px;--ease:cubic-bezier(.22,.61,.36,1);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Hanken Grotesk',sans-serif;
-    font-size:17px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-    position:relative;
-  }
-  /* graph-paper ground */
-  body::before{
-    content:"";position:fixed;inset:0;z-index:-2;
-    background-image:
-      linear-gradient(var(--line-2) 1px,transparent 1px),
-      linear-gradient(90deg,var(--line-2) 1px,transparent 1px),
-      linear-gradient(var(--line) 1px,transparent 1px),
-      linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:28px 28px,28px 28px,140px 140px,140px 140px;
-    background-position:-1px -1px;
-  }
-  /* paper grain */
-  body::after{
-    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
-  }
+  body{background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;position:relative}
+  body::before{content:"";position:fixed;inset:0;z-index:-2;
+    background-image:linear-gradient(var(--line-2) 1px,transparent 1px),linear-gradient(90deg,var(--line-2) 1px,transparent 1px),linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:28px 28px,28px 28px,140px 140px,140px 140px;background-position:-1px -1px}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E")}
   ::selection{background:var(--amber);color:var(--paper)}
-
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
-  .mono{font-family:'Spline Sans Mono',monospace;text-transform:uppercase;letter-spacing:.16em;font-size:11.5px;font-weight:500}
+  .mono{font-family:'Spline Sans Mono',monospace;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:500}
 
-  /* ---------- top bar ---------- */
-  header{
-    position:sticky;top:0;z-index:60;
-    background:rgba(241,233,218,.82);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .bar{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .brand{display:flex;align-items:center;gap:14px;font-family:'Spline Sans Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--ink)}
-  .brand b{font-weight:600}
-  .brand .x{color:var(--amber);font-weight:600}
-  .navlinks{display:flex;gap:26px}
-  .navlinks a{
-    font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;
-    color:var(--ink-soft);text-decoration:none;transition:color .25s;position:relative;padding:4px 0;
-  }
-  .navlinks a:hover{color:var(--amber)}
-  @media(max-width:900px){.navlinks{display:none}}
+  /* top bar */
+  header{position:sticky;top:0;z-index:60;background:rgba(241,233,218,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .back{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--ink-soft);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .25s}
+  .back:hover{color:var(--amber)}
+  .brand{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--ink)}
+  .brand b{font-weight:600}.brand .x{color:var(--amber)}
 
-  /* ---------- hero ---------- */
-  .hero{padding:96px 0 60px;position:relative}
-  .tag{
-    display:inline-flex;align-items:center;gap:10px;color:var(--ink-soft);
-    border:1px solid var(--line);border-radius:100px;padding:7px 16px 7px 12px;margin-bottom:38px;
-    background:rgba(255,255,255,.25);
-  }
-  .tag .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(188,78,27,.18)}
-  h1{
-    font-family:'Fraunces',serif;font-weight:900;font-optical-sizing:auto;
-    font-size:clamp(40px,7vw,86px);line-height:.98;letter-spacing:-.02em;
-    max-width:14ch;
-  }
-  h1 .em{font-style:italic;font-weight:500;color:var(--amber)}
-  h1 .pine{color:var(--pine)}
-  .lede{
-    margin-top:30px;max-width:46ch;font-size:clamp(18px,2.2vw,21px);color:var(--ink-soft);
-    line-height:1.5;
-  }
-  .hero-meta{
-    margin-top:48px;display:flex;gap:40px;flex-wrap:wrap;padding-top:26px;border-top:1px solid var(--line);
-  }
-  .hero-meta div{max-width:30ch}
-  .hero-meta .k{color:var(--amber)}
-  .hero-meta .v{margin-top:6px;font-size:14.5px;color:var(--ink-soft);line-height:1.45}
+  /* doc head */
+  .dochead{padding:64px 0 30px}
+  .kicker{display:inline-flex;align-items:center;gap:10px;color:var(--ink-soft);border:1px solid var(--line);border-radius:100px;padding:6px 15px 6px 11px;margin-bottom:26px;background:rgba(255,255,255,.3)}
+  .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--amber)}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,5vw,46px);line-height:1.04;letter-spacing:-.02em;max-width:20ch}
+  .docsub{margin-top:18px;max-width:60ch;color:var(--ink-soft);font-size:17px}
+  .confidential{margin-top:20px;font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);border:1px dashed rgba(188,78,27,.4);border-radius:6px;padding:8px 12px;display:inline-block}
 
-  /* reveal */
-  .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-  .rv.in{opacity:1;transform:none}
-  .hero .rv:nth-child(1){transition-delay:.05s}
-  .hero .rv:nth-child(2){transition-delay:.15s}
-  .hero .rv:nth-child(3){transition-delay:.27s}
-  .hero .rv:nth-child(4){transition-delay:.4s}
+  /* meeting-type switcher */
+  .switcher{margin:30px 0 8px;padding:22px 0 0;border-top:1px solid var(--line)}
+  .switcher .lab{font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:13px}
+  .types{display:flex;gap:8px;flex-wrap:wrap}
+  .type{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.04em;padding:9px 15px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.3);color:var(--ink-soft);cursor:pointer;transition:all .25s;font-weight:500}
+  .type:hover{border-color:var(--ink-soft);transform:translateY(-2px)}
+  .type[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .type[aria-pressed="true"] .tt{color:var(--amber-bright)}
+  .typenote{margin-top:16px;padding:16px 20px;border-left:2px solid var(--amber);background:rgba(255,255,255,.28);font-size:14.5px;color:var(--ink);line-height:1.5;border-radius:0 8px 8px 0}
+  .typenote b{font-weight:700}
 
-  /* ---------- section frame ---------- */
-  section{padding:84px 0;position:relative}
-  .seclabel{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
-  .seclabel .num{font-family:'Spline Sans Mono',monospace;color:var(--amber);font-size:13px;font-weight:600;letter-spacing:.1em}
-  .seclabel .ln{flex:1;height:1px;background:var(--line)}
-  .seclabel .of{font-family:'Spline Sans Mono',monospace;color:var(--ink-faint);font-size:11px;letter-spacing:.1em}
-  h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,46px);line-height:1.04;letter-spacing:-.015em;max-width:18ch}
-  .sub{margin-top:18px;max-width:54ch;color:var(--ink-soft);font-size:17.5px}
+  /* doc body sections */
+  .docbody{padding:20px 0 80px}
+  .sec{margin-top:34px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.34);overflow:hidden}
+  .sechead{display:flex;align-items:baseline;gap:14px;padding:18px 26px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.25)}
+  .sechead .sn{font-family:'Spline Sans Mono',monospace;font-size:12px;font-weight:600;color:var(--amber);letter-spacing:.06em}
+  .sechead h2{font-family:'Fraunces',serif;font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .seccontent{padding:24px 26px}
 
-  /* ---------- thesis ---------- */
-  .thesis-quote{
-    font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3.6vw,40px);line-height:1.22;letter-spacing:-.01em;
-    max-width:20ch;margin:6px 0 0;
-  }
-  .thesis-quote .hl{
-    background:linear-gradient(transparent 62%,rgba(188,78,27,.22) 62%);padding:0 2px;
-  }
-  .thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;margin-top:50px;align-items:start}
-  @media(max-width:760px){.thesis-grid{grid-template-columns:1fr;gap:30px}}
-  .thesis-grid p{color:var(--ink-soft);font-size:16.5px}
-  .thesis-grid p+p{margin-top:16px}
-  .pull{
-    border-left:2px solid var(--amber);padding:4px 0 4px 22px;
-  }
-  .pull .mono{color:var(--amber);display:block;margin-bottom:10px}
-  .pull strong{font-weight:700;color:var(--ink)}
+  /* logistics grid */
+  .lgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 36px}
+  @media(max-width:680px){.lgrid{grid-template-columns:1fr}}
+  .lrow .k{font-family:'Spline Sans Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+  .lrow .v{font-size:15px;color:var(--ink);line-height:1.4}
+  .temp{display:inline-block;font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.06em;padding:2px 9px;border-radius:5px;font-weight:600}
+  .temp.warm{background:rgba(43,74,58,.14);color:var(--pine)}
+  .temp.neutral{background:rgba(33,30,23,.08);color:var(--ink-soft)}
 
-  /* ---------- ROLE SWITCHER (centerpiece) ---------- */
-  .room{background:linear-gradient(180deg,var(--paper-2),var(--paper));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .room-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
-  .room-hint{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:9px}
-  .room-hint .arr{color:var(--amber);font-size:15px}
-  .execs{
-    display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:36px;
-  }
-  @media(max-width:900px){.execs{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:520px){.execs{grid-template-columns:repeat(2,1fr)}}
-  .exec{
-    text-align:left;cursor:pointer;background:rgba(255,255,255,.32);
-    border:1px solid var(--line);border-radius:11px;padding:15px 14px 16px;
-    transition:transform .3s var(--ease),border-color .3s,background .3s,box-shadow .3s;position:relative;overflow:hidden;
-    font-family:inherit;color:inherit;
-  }
-  .exec:hover{transform:translateY(-3px);border-color:var(--ink-soft);background:rgba(255,255,255,.55)}
-  .exec .role-mono{font-family:'Spline Sans Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
-  .exec .nm{font-family:'Fraunces',serif;font-weight:600;font-size:18px;line-height:1.05;margin-top:9px}
-  .exec .ttl{font-size:12px;color:var(--ink-soft);margin-top:5px;line-height:1.25}
-  .exec .key{position:absolute;top:10px;right:10px;font-family:'Spline Sans Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--amber);border:1px solid rgba(188,78,27,.4);border-radius:4px;padding:2px 5px}
-  .exec[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);box-shadow:0 14px 30px -14px rgba(33,30,23,.5)}
-  .exec[aria-pressed="true"] .role-mono{color:var(--amber-bright)}
-  .exec[aria-pressed="true"] .nm{color:var(--paper)}
-  .exec[aria-pressed="true"] .ttl{color:rgba(241,233,218,.7)}
-  .exec[aria-pressed="true"] .key{color:var(--amber-bright);border-color:rgba(221,113,38,.5)}
+  /* attendees */
+  .att{display:grid;grid-template-columns:46px 1fr;gap:16px;padding:15px 0;border-bottom:1px solid var(--line-2)}
+  .att:last-child{border-bottom:none}
+  .att .av{width:46px;height:46px;border-radius:9px;background:var(--pine);color:#EAF0EC;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:17px}
+  .att.key .av{background:var(--amber)}
+  .att .nm{font-family:'Fraunces',serif;font-weight:600;font-size:16px}
+  .att .nm span{font-family:'Hanken Grotesk',sans-serif;font-weight:400;font-size:12.5px;color:var(--ink-faint)}
+  .att .bio{font-size:13.5px;color:var(--ink-soft);line-height:1.45;margin-top:4px}
+  .att .read{font-size:12.5px;color:var(--pine);margin-top:5px}
+  .att .read b{font-family:'Spline Sans Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
 
-  /* detail panel */
-  .panel{
-    margin-top:18px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.42);
-    padding:40px;position:relative;overflow:hidden;
-  }
-  .panel::before{
-    content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--amber);
-  }
-  .panel-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:4px}
-  .panel-head .pn{font-family:'Fraunces',serif;font-weight:600;font-size:30px;letter-spacing:-.01em}
-  .panel-head .pt{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
-  .panel-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px 46px;margin-top:30px}
-  @media(max-width:760px){.panel-grid{grid-template-columns:1fr;gap:26px}}
-  .pfield .lab{font-family:'Spline Sans Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:8px;margin-bottom:11px}
-  .pfield .lab::before{content:"";width:14px;height:1px;background:var(--amber)}
-  .pfield p{font-size:16.5px;color:var(--ink);line-height:1.5}
-  .cut{font-family:'Fraunces',serif!important;font-weight:500;font-size:20px!important;line-height:1.35!important;color:var(--ink)}
-  .blocks-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
-  .bchip{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.06em;background:var(--pine);color:#EAF0EC;padding:6px 11px;border-radius:6px;font-weight:500}
-  .walkaway{
-    grid-column:1/-1;margin-top:6px;padding:22px 26px;background:var(--ink);border-radius:11px;color:var(--paper);
-    display:flex;gap:18px;align-items:flex-start;
-  }
-  .walkaway .qm{font-family:'Fraunces',serif;font-size:46px;line-height:.6;color:var(--amber-bright);font-weight:900}
-  .walkaway .wt{font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-bright);margin-bottom:8px}
-  .walkaway .wq{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:20px;line-height:1.35;color:var(--paper)}
-  .swap{animation:swapIn .5s var(--ease)}
-  @keyframes swapIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  p.body{font-size:15px;color:var(--ink-soft);line-height:1.55}
+  p.body+p.body{margin-top:12px}
+  .body b{color:var(--ink)}
 
-  /* ---------- content kit ---------- */
-  .kit{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:46px}
-  @media(max-width:760px){.kit{grid-template-columns:1fr}}
-  .block{
-    border:1px solid var(--line);border-radius:13px;padding:28px 28px 30px;background:rgba(255,255,255,.3);
-    transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;position:relative;
-    display:flex;flex-direction:column;
-  }
-  .block .ops{margin-top:auto}
-  .block:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(33,30,23,.45);border-color:var(--ink-soft)}
-  .block.feat{grid-column:1/-1;background:linear-gradient(110deg,rgba(43,74,58,.06),rgba(255,255,255,.34))}
-  .block .bid{font-family:'Spline Sans Mono',monospace;font-size:12px;font-weight:600;color:var(--amber);letter-spacing:.08em}
-  .block h3{font-family:'Fraunces',serif;font-weight:600;font-size:23px;margin:12px 0 0;letter-spacing:-.01em}
-  .block .desc{margin-top:12px;color:var(--ink-soft);font-size:15.5px;line-height:1.5}
-  .block .move{margin-top:16px;padding-top:15px;border-top:1px dashed var(--line);font-size:14.5px;color:var(--ink)}
-  .block .move b{font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--pine);display:block;margin-bottom:6px;font-weight:600}
-  .block .ops{margin-top:16px;padding-top:15px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px}
-  .block .ops .op{font-size:13px;color:var(--ink-soft);line-height:1.4;display:grid;grid-template-columns:74px 1fr;gap:12px;align-items:baseline}
-  .block .ops .op span{font-family:'Spline Sans Mono',monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);font-weight:600;padding-top:1px}
-  .kitlink{display:inline-block;margin-top:16px;font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(188,78,27,.35);padding-bottom:2px;transition:all .25s}
-  .kitlink:hover{color:var(--amber-bright);border-color:var(--amber-bright)}
+  /* objective = the script */
+  .obj{border:1px solid var(--line);border-radius:11px;padding:22px;margin-top:16px;background:rgba(255,255,255,.3)}
+  .obj:first-child{margin-top:0}
+  .obj .on{font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:10px}
+  .obj .outcome{font-family:'Fraunces',serif;font-weight:600;font-size:19px;line-height:1.2;letter-spacing:-.01em;margin-bottom:14px}
+  .scriptrow{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:11px 0;border-top:1px solid var(--line-2)}
+  @media(max-width:600px){.scriptrow{grid-template-columns:1fr;gap:4px}}
+  .scriptrow .sl{font-family:'Spline Sans Mono',monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding-top:2px}
+  .scriptrow .sv{font-size:14.5px;color:var(--ink);line-height:1.5}
+  .scriptrow .sv .tp{display:block;padding:7px 0;border-bottom:1px dashed var(--line-2)}
+  .scriptrow .sv .tp:last-child{border-bottom:none}
+  .scriptrow.ask .sv{color:var(--pine);font-weight:600}
+  .scriptrow.why .sv{font-style:italic}
 
-  /* ---------- axes ---------- */
-  .axes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
-  @media(max-width:760px){.axes{grid-template-columns:1fr}}
-  .axis{border:1px solid var(--line);border-radius:12px;padding:26px;background:rgba(255,255,255,.28)}
-  .axis .an{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);display:flex;justify-content:space-between}
-  .axis .an .pri{color:var(--pine)}
-  .axis h4{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin:10px 0 14px}
-  .axis ul{list-style:none}
-  .axis li{font-size:14.5px;color:var(--ink-soft);padding:7px 0;border-top:1px solid var(--line-2);display:flex;gap:10px}
-  .axis li:first-of-type{border-top:none}
-  .axis li b{color:var(--ink);font-weight:600}
-  .formula{
-    margin-top:22px;padding:20px 24px;border:1px solid var(--line);border-radius:11px;background:var(--ink);color:var(--paper);
-    font-family:'Spline Sans Mono',monospace;font-size:13px;letter-spacing:.04em;display:flex;gap:12px;align-items:center;flex-wrap:wrap;line-height:1.7
-  }
-  .formula .op{color:var(--amber-bright);font-weight:600}
-  .formula .res{color:var(--amber-bright)}
+  /* lists */
+  ul.tight{list-style:none;margin-top:6px}
+  ul.tight li{font-size:14.5px;color:var(--ink-soft);padding:8px 0 8px 20px;border-top:1px solid var(--line-2);position:relative;line-height:1.45}
+  ul.tight li:first-child{border-top:none}
+  ul.tight li::before{content:"—";position:absolute;left:0;color:var(--amber)}
+  ul.tight li b{color:var(--ink)}
+  .redflag li::before{content:"!";color:var(--amber);font-weight:700}
 
-  /* ---------- timeline ---------- */
-  .arc{position:relative;margin-top:50px}
-  .arc::before{content:"";position:absolute;left:0;right:0;top:30px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 16px)}
-  .arc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  @media(max-width:760px){.arc-grid{grid-template-columns:1fr}.arc::before{display:none}}
-  .stop{position:relative;padding-top:62px}
-  .stop .pin{position:absolute;top:23px;left:0;width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--amber)}
-  .stop.flag .pin{background:var(--amber);box-shadow:0 0 0 5px rgba(188,78,27,.18)}
-  .stop .q{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--amber);font-weight:600}
-  .stop h4{font-family:'Fraunces',serif;font-weight:600;font-size:20px;margin:8px 0 4px;line-height:1.1}
-  .stop .fmt{font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
-  .stop .job{margin-top:11px;font-size:14.5px;color:var(--ink-soft);line-height:1.45}
-  .stop .ask{margin-top:12px;font-size:13px;color:var(--pine);font-weight:600}
-  .stop.flag h4{color:var(--amber)}
-
-  /* ---------- WOW SECTION ---------- */
-  .wow-sec{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
-  .wow-sec::before{content:"";position:absolute;inset:0;z-index:0;opacity:.5;
-    background-image:linear-gradient(rgba(241,233,218,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(241,233,218,.05) 1px,transparent 1px);background-size:28px 28px}
-  .wow-sec .wrap{position:relative;z-index:1}
-  .wow-sec .seclabel .num{color:var(--amber-bright)}
-  .wow-sec .seclabel .ln{background:rgba(241,233,218,.18)}
-  .wow-sec .seclabel .of{color:rgba(241,233,218,.45)}
-  .wow-sec h2{color:var(--paper)}
-  .wow-sec .sub{color:rgba(241,233,218,.66)}
-  .wowcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
-  @media(max-width:880px){.wowcards{grid-template-columns:1fr 1fr}}
-  @media(max-width:600px){.wowcards{grid-template-columns:1fr}}
-  .wowcard{border:1px solid rgba(241,233,218,.16);border-radius:14px;padding:28px 26px 30px;background:rgba(241,233,218,.035);position:relative;transition:transform .35s var(--ease),background .35s,border-color .35s}
-  .wowcard:hover{transform:translateY(-5px);background:rgba(241,233,218,.07);border-color:rgba(221,113,38,.5)}
-  .wowcard.hero{grid-column:1/-1;background:linear-gradient(115deg,rgba(221,113,38,.16),rgba(241,233,218,.04));border-color:rgba(221,113,38,.4);display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center}
-  @media(max-width:600px){.wowcard.hero{grid-template-columns:1fr;gap:16px}}
-  .wowcard .wnum{font-family:'Spline Sans Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--amber-bright)}
-  .wowcard.hero .wnum{font-family:'Fraunces',serif;font-weight:900;font-size:60px;line-height:.8;color:var(--amber-bright)}
-  .wowcard h3{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin:14px 0 0;letter-spacing:-.01em;line-height:1.1;color:var(--paper)}
-  .wowcard.hero h3{font-size:30px;margin:0}
-  .wowcard p{margin-top:11px;font-size:15px;line-height:1.5;color:rgba(241,233,218,.72)}
-  .wowcard .tagm{margin-top:14px;font-family:'Spline Sans Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-bright);display:flex;align-items:center;gap:8px}
-  .wowcard .tagm::before{content:"";width:16px;height:1px;background:var(--amber-bright)}
-
-  /* ---------- AGENDA / RUN OF SHOW ---------- */
-  .dayhead{display:flex;align-items:baseline;gap:16px;margin:46px 0 4px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
-  .dayhead:first-of-type{margin-top:40px}
-  .dayhead .dn{font-family:'Fraunces',serif;font-weight:600;font-size:26px;letter-spacing:-.01em}
-  .dayhead .dd{font-family:'Spline Sans Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-weight:600}
-  .dayhead .dt{margin-left:auto;font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--ink-faint)}
-  .slot{display:grid;grid-template-columns:118px 1fr 200px;gap:26px;padding:18px 0;border-bottom:1px solid var(--line);position:relative;transition:background .3s}
-  @media(max-width:760px){.slot{grid-template-columns:104px 1fr;gap:8px 20px}.slot .pres{grid-column:2;margin-top:8px}}
-  @media(max-width:640px){.slot{grid-template-columns:1fr}.slot .pres{grid-column:1}}
-  .slot:hover{background:rgba(255,255,255,.22)}
-  .slot .time{font-family:'Spline Sans Mono',monospace;font-size:12.5px;font-weight:600;color:var(--amber);letter-spacing:.01em;padding-top:3px;line-height:1.4}
-  .slot .time span{display:block;font-size:9px;color:var(--ink-faint);font-weight:400;letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
-  .slot .body h4{font-family:'Fraunces',serif;font-weight:600;font-size:18.5px;letter-spacing:-.01em;line-height:1.15}
-  .slot .body p{margin-top:6px;font-size:14px;color:var(--ink-soft);line-height:1.45;max-width:54ch}
-  .slot .tags{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
-  .slot .tg{font-family:'Spline Sans Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:5px;font-weight:500}
-  .slot .tg.piece{background:var(--pine);color:#EAF0EC}
-  .slot .tg.wow{background:var(--amber);color:var(--paper)}
-  .slot .tg.who{background:transparent;border:1px solid var(--line);color:var(--ink-soft)}
-  .slot .pres{font-size:13px;color:var(--ink);line-height:1.4;padding-top:3px}
-  .slot .pres .pn{font-weight:600}
-  .slot .pres .pr{display:block;font-family:'Spline Sans Mono',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin-top:2px}
-  .slot.util{background:rgba(33,30,23,.025)}
-  .slot.util .body h4{font-size:14px;font-family:'Spline Sans Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
-  .slot.peak{background:linear-gradient(110deg,rgba(188,78,27,.08),transparent)}
-  .slot.peak .body h4{color:var(--amber)}
-  .agenda-note{margin-top:24px;font-size:14px;color:var(--ink-soft);display:flex;gap:12px;align-items:baseline}
-  .agenda-note .mono{color:var(--amber);white-space:nowrap}
-  .agenda-legend{margin-top:18px;display:flex;gap:18px;flex-wrap:wrap;font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
-  .agenda-legend span{display:flex;align-items:center;gap:7px}
-  .agenda-legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
-
-  /* ---------- EBC ---------- */
-  .ebc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;margin-top:46px}
-  @media(max-width:860px){.ebc-grid{grid-template-columns:1fr;gap:34px}}
-  .room-list{border-top:1px solid var(--line)}
-  .pairing-note{font-size:13.5px;color:var(--ink-soft);margin-bottom:16px;line-height:1.45;max-width:52ch}
-  .room-list .who{padding:16px 0;border-bottom:1px solid var(--line)}
-  .room-list .who .pair{display:grid;grid-template-columns:1fr 26px 1fr;gap:10px;align-items:center}
-  @media(max-width:520px){.room-list .who .pair{grid-template-columns:1fr;gap:6px}.room-list .who .vs{display:none}}
-  .room-list .who .pair .thd,.room-list .who .pair .str{font-family:'Fraunces',serif;font-weight:600;font-size:15.5px;line-height:1.15;display:flex;flex-direction:column}
-  .room-list .who .pair small{font-family:'Spline Sans Mono',monospace;font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);font-weight:400;margin-top:4px;line-height:1.3}
-  .room-list .who .pair .str{color:var(--pine)}
-  .room-list .who .pair .vs{text-align:center;color:var(--amber);font-size:15px;font-weight:600}
-  .room-list .who.keyrow .pair .thd{color:var(--amber)}
-  .room-list .who .why{font-size:13.5px;color:var(--ink-soft);line-height:1.45;margin-top:9px}
-  .side h4{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
-  .takeaways{display:flex;flex-direction:column;gap:11px;margin-bottom:34px}
-  .ta{display:flex;gap:14px;align-items:flex-start;padding:15px 17px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.3)}
-  .ta .n{font-family:'Fraunces',serif;font-weight:900;font-size:22px;color:var(--amber);line-height:1}
-  .ta p{font-size:14.5px;line-height:1.4}
-  .ta p b{font-weight:700}
-  .wow{display:flex;flex-direction:column;gap:9px}
-  .wow .w{display:flex;gap:12px;align-items:baseline;font-size:14.5px;color:var(--ink-soft);padding:9px 0;border-top:1px dashed var(--line)}
-  .wow .w:first-child{border-top:none}
-  .wow .w .star{color:var(--amber);font-family:'Spline Sans Mono',monospace;font-size:11px}
-  .wow .w b{color:var(--ink);font-weight:600}
-
-  /* format callout */
-  .fmtcall{margin-top:42px;padding:26px 30px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(110deg,rgba(188,78,27,.07),rgba(255,255,255,.32));display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center}
-  @media(max-width:620px){.fmtcall{grid-template-columns:1fr;gap:14px}}
-  .fmtcall .big{font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--amber);line-height:1;white-space:nowrap}
-  .fmtcall p{font-size:15px;color:var(--ink-soft)}
-  .fmtcall p b{color:var(--ink)}
-  .doclink{display:block;margin-top:14px;padding:24px 28px;border:1px solid var(--line);border-radius:13px;background:var(--ink);text-decoration:none;transition:transform .3s var(--ease),box-shadow .3s}
-  .doclink:hover{transform:translateY(-3px);box-shadow:0 16px 34px -18px rgba(33,30,23,.5)}
-  .doclink .dl-k{display:block;font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-bright);margin-bottom:9px}
-  .doclink .dl-t{display:block;font-family:'Fraunces',serif;font-weight:600;font-size:21px;color:var(--paper);letter-spacing:-.01em;line-height:1.15}
-  .doclink .dl-d{display:block;margin-top:9px;font-size:14px;color:rgba(241,233,218,.66);line-height:1.45;max-width:64ch}
-
-  /* ---------- phases (pre/post) ---------- */
-  .phases{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:46px}
-  @media(max-width:760px){.phases{grid-template-columns:1fr}}
-  .phase{border:1px solid var(--line);border-radius:13px;padding:30px;background:rgba(255,255,255,.3)}
-  .phase .pl{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
-  .phase h3{font-family:'Fraunces',serif;font-weight:600;font-size:25px;margin-bottom:18px}
-  .qa{padding:14px 0;border-top:1px solid var(--line-2)}
-  .qa:first-of-type{border-top:none;padding-top:0}
-  .qa .q{font-weight:700;font-size:15px;color:var(--ink);display:flex;gap:9px}
-  .qa .q .qi{color:var(--amber);font-family:'Spline Sans Mono',monospace;font-size:12px}
-  .qa .a{margin-top:7px;font-size:14.5px;color:var(--ink-soft);line-height:1.5;padding-left:21px}
-
-  /* ---------- beyond ---------- */
-  .beyond{background:var(--ink);color:var(--paper);border-radius:0}
-  .beyond .seclabel .num{color:var(--amber-bright)}
-  .beyond .seclabel .ln{background:rgba(241,233,218,.18)}
-  .beyond .seclabel .of{color:rgba(241,233,218,.4)}
-  .beyond h2{color:var(--paper)}
-  .beyond .blist{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 46px;margin-top:40px}
-  @media(max-width:760px){.beyond .blist{grid-template-columns:1fr}}
-  .beyond .bx .bk{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-bright);display:flex;align-items:center;gap:10px;margin-bottom:10px}
-  .beyond .bx .bk::before{content:"";width:16px;height:1px;background:var(--amber-bright)}
-  .beyond .bx h4{font-family:'Fraunces',serif;font-weight:600;font-size:21px;margin-bottom:9px;color:var(--paper)}
-  .beyond .bx p{font-size:15px;color:rgba(241,233,218,.68);line-height:1.5}
-
-  /* footer */
-  footer{padding:54px 0 70px;border-top:1px solid var(--line)}
-  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
-  .foot .ft-l{max-width:48ch}
-  .foot .ft-l .fm{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:21px;line-height:1.3}
-  .foot .ft-r{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--ink-faint);text-align:right;line-height:1.8}
-  .disclaimer{margin-top:36px;font-family:'Spline Sans Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--ink-faint);line-height:1.7;max-width:80ch}
-
-  /* scroll progress */
-  .prog{position:fixed;top:0;left:0;height:2px;background:var(--amber);z-index:80;width:0%}
+  footer{padding:40px 0 70px;border-top:1px solid var(--line)}
+  .disclaimer{font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--ink-faint);line-height:1.7;max-width:80ch}
+  .swapwrap{animation:fade .4s var(--ease)}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div class="prog" id="prog"></div>
 
 <header>
-  <div class="wrap bar">
-    <div class="brand"><b>The Home Depot</b><span class="x">×</span><span>Stripe</span></div>
-    <nav class="navlinks">
-      <a href="#thesis">Thesis</a>
-      <a href="#room">The Room</a>
-      <a href="#kit">Content</a>
-      <a href="#arc">2026 Plan</a>
-      <a href="#ebc">The Briefing</a>
-      <a href="#wow">Wow Factor</a>
-      <a href="#agenda">Agenda</a>
-      <a href="#phases">Journey</a>
-    </nav>
+  <div class="bar">
+    <a class="back" href="index.html">← Back to the plan</a>
+    <div class="brand"><b>The Home Depot</b> <span class="x">×</span> Stripe · Internal</div>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <div class="tag rv"><span class="dot"></span><span class="mono">2026 Executive Engagement Plan</span></div>
-    <h1 class="rv">One interconnected retailer deserves <span class="em">one interconnected</span> <span class="pine">payments system.</span></h1>
-    <p class="lede rv">The Home Depot is becoming one company across the do-it-yourself shopper, the professional contractor, the store, and the screen. This is a plan to make its executives see payments the same way: as the connective tissue of that transformation, not a line item to negotiate down. Transformational, not transactional.</p>
-    <div class="hero-meta rv">
-      <div><div class="mono k">The customer</div><div class="v">$164.7B in FY2025 sales · 2,359 stores + 1,250 SRS locations · a "project retailer" investing to remove friction.</div></div>
-      <div><div class="mono k">The moment</div><div class="v">A brand-new CTO (effective April 2026) chartered to build a seamless, AI-driven, interconnected experience. Her mandate is the thesis.</div></div>
-      <div><div class="mono k">The approach</div><div class="v">Five pieces of content we build once and tailor to whoever is in the room — so we can stand up a briefing in days, not weeks.</div></div>
+<div class="wrap">
+  <div class="dochead">
+    <div class="kicker"><span class="dot"></span><span class="mono">Internal Stripe Briefing Doc</span></div>
+    <h1>What the Stripe team needs before walking in</h1>
+    <p class="docsub">This is the prep doc for the Stripe executives attending — not for The Home Depot. It assumes zero prior context: who's in the room, what they care about, exactly what to say, and what to ask for. One source of truth so everyone tells the same story.</p>
+    <div class="confidential">⚠ Internal use only · Stripe + account team · Not shared with the customer</div>
+
+    <div class="switcher">
+      <div class="lab">This example is built for → choose the meeting type</div>
+      <div class="types" id="types"></div>
+      <div class="typenote" id="typenote"></div>
     </div>
   </div>
-</section>
 
-<!-- THESIS -->
-<section id="thesis">
-  <div class="wrap">
-    <div class="seclabel"><span class="num">01</span><span class="ln"></span><span class="of">The one idea everything customizes off</span></div>
-    <h2 class="rv">The thesis</h2>
-    <p class="thesis-quote rv">Payments is where <span class="hl">One Home Depot</span> becomes real — or stays fragmented.</p>
-    <div class="thesis-grid">
-      <div class="rv">
-        <p>The Home Depot has said it in its own words: an interconnected-retail strategy that blends physical and digital for both the do-it-yourself shopper and the professional contractor. CEO Ted Decker calls it a "project retailer" investing to "remove friction and make home improvement seamless."</p>
-        <p>But most large retailers run in-store, online, and business-to-business on payment systems that don't talk to each other. That fragmentation is invisible on the books and enormous in impact: lost sales from declined cards, fraud fought three different ways, no single view of a customer who shops every channel, and a professional contractor whose financial relationship starts over every time she switches from app to aisle to invoice.</p>
-      </div>
-      <div class="rv">
-        <div class="pull">
-          <span class="mono">Stripe's role</span>
-          <p style="font-size:17px;color:var(--ink)">Unify it. One platform across in-store, online, and business-to-business, with financing built for the professional contractor. Turn payments data into the <strong>fuel for the connected, AI-driven experience the company is already setting out to build.</strong></p>
-          <p style="margin-top:16px;color:var(--ink-soft);font-size:15px">That is the transformation. Everything that follows is a different way of telling this one story — to a different person, at a different moment.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <div class="docbody" id="docbody"></div>
 
-<!-- THE ROOM : ROLE SWITCHER -->
-<section id="room" class="room">
-  <div class="wrap">
-    <div class="seclabel"><span class="num">02</span><span class="ln"></span><span class="of">The customization engine · cut by role</span></div>
-    <div class="room-intro">
-      <div>
-        <h2 class="rv">Step into the room.</h2>
-        <p class="sub rv">Everyone's in the same briefing — but the same story lands differently with a CFO than a CTO. Pick a Home Depot leader to see what they care about, how we'd frame it for them, and the moment in the day built to win them over.</p>
-      </div>
-      <div class="room-hint rv"><span class="arr">↓</span> Select a leader</div>
-    </div>
-
-    <div class="execs rv" id="execs" role="tablist" aria-label="The Home Depot executives"></div>
-    <div class="panel" id="panel"></div>
-  </div>
-</section>
-
-<!-- CONTENT KIT -->
-<section id="kit">
-  <div class="wrap">
-    <div class="seclabel"><span class="num">03</span><span class="ln"></span><span class="of">Build it once, reuse it everywhere</span></div>
-    <h2 class="rv">Five pieces of content we build once and keep ready</h2>
-    <p class="sub rv">Every executive meeting needs the same handful of things: a story about the customer's own business, a demo, proof that someone like them already did it, a point of view on where things are going, and something to send ahead. Most teams rebuild all of that from scratch every time. We don't. We build these five pieces once, make them excellent, keep them on the shelf, and tailor them to whoever is in the room. That is how a briefing pulled together in two days still feels like it was made just for them.</p>
-    <div class="kit" id="kit-grid"></div>
-  </div>
-</section>
-
-<!-- AXES -->
-<section id="axes" style="padding-top:20px">
-  <div class="wrap">
-    <div class="seclabel"><span class="num">04</span><span class="ln"></span><span class="of">How we tailor each meeting</span></div>
-    <h2 class="rv">Before any meeting, we answer three questions</h2>
-    <p class="sub rv">The five pieces stay the same. What changes is which ones we bring and how we frame them — and that's decided by three questions about the meeting ahead. The first one matters most: what is this meeting actually for?</p>
-    <div class="axes">
-      <div class="axis rv">
-        <div class="an"><span>Question 1</span><span class="pri">★ Matters most</span></div>
-        <h4>Why are we meeting?</h4>
-        <ul>
-          <li><b>To build the relationship</b> — earn trust, set the vision, no hard ask</li>
-          <li><b>To go deep on something new</b> — a specific capability or technical problem</li>
-          <li><b>To move the deal forward</b> — prove value, scope a pilot, ask for commitment</li>
-        </ul>
-      </div>
-      <div class="axis rv">
-        <div class="an"><span>Question 2</span><span>Then</span></div>
-        <h4>What kind of meeting is it?</h4>
-        <ul>
-          <li><b>A short video call</b> — 30–45 min, one topic, mostly conversation</li>
-          <li><b>A full in-person briefing</b> — all five pieces, led by the demo</li>
-          <li><b>A dinner</b> — no slides; the point of view, as a conversation</li>
-        </ul>
-      </div>
-      <div class="axis rv">
-        <div class="an"><span>Question 3</span><span>And</span></div>
-        <h4>Who's at the table?</h4>
-        <ul>
-          <li><b>The leaders attending</b> set the emphasis (see "the room" above)</li>
-          <li><b>A CFO</b> wants the numbers; <b>a CTO</b> wants what's coming</li>
-          <li>We lead with what each person came to hear</li>
-        </ul>
-      </div>
-    </div>
-    <div class="formula rv">
-      <span>Answer the three questions</span><span class="op">→</span><span>pull the pieces you already have</span><span class="op">→</span><span class="res">a meeting built for its purpose, ready in hours</span>
-    </div>
-  </div>
-</section>
-
-<!-- 2026 ARC -->
-<section id="arc">
-  <div class="wrap">
-    <div class="seclabel"><span class="num">05</span><span class="ln"></span><span class="of">Milestones &amp; timeline</span></div>
-    <h2 class="rv">One meeting is a moment. A year is a relationship.</h2>
-    <p class="sub rv">This isn't a single briefing — it's four milestones across 2026 that build on each other, each with its own timing and its own ask. Each one ends by setting up the next, so the relationship keeps moving forward instead of going cold between meetings. Here is the shape of the year.</p>
-    <div class="arc rv">
-      <div class="arc-grid">
-        <div class="stop"><div class="pin"></div><div class="q">Q1–Q2</div><h4>First meeting &amp; homework</h4><div class="fmt">Video call · account team</div><div class="job">Show the opportunity. Learn how their payments actually work today. Earn the in-person briefing.</div><div class="ask">The ask → agree to the briefing</div></div>
-        <div class="stop flag"><div class="pin"></div><div class="q">Q2–Q3</div><h4>The big briefing</h4><div class="fmt">In person</div><div class="job">The moment everything builds to. All five pieces, led by the demo, with a founder conversation.</div><div class="ask">The ask → start a small pilot</div></div>
-        <div class="stop"><div class="pin"></div><div class="q">Q3</div><h4>Pilot &amp; deeper dives</h4><div class="fmt">Short video calls</div><div class="job">Prove it works on their own data. Keep the CTO and CIO close between the big moments.</div><div class="ask">The ask → grow the pilot</div></div>
-        <div class="stop"><div class="pin"></div><div class="q">Q4</div><h4>Commit &amp; grow</h4><div class="fmt">In person</div><div class="job">Ask them to commit. Name a senior Stripe leader as their sponsor. Expand the work.</div><div class="ask">The ask → sponsor + scale up</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EBC -->
-<section id="ebc" class="room">
-  <div class="wrap">
-    <div class="seclabel"><span class="num">06</span><span class="ln"></span><span class="of">The big in-person briefing</span></div>
-    <h2 class="rv">The room, the messages, the moments</h2>
-    <p class="sub rv">Bringing payments together isn't a decision one person makes — it touches technology, finance, the professional-contractor business, and the online business. Getting all of them in one room, hearing the same story, is the point. It turns payments from "something IT buys" into "something the whole company is building."</p>
-    <div class="ebc-grid">
-      <div>
-        <h4 class="side" style="margin-bottom:8px">Who's in the room — matched 1:1</h4>
-        <p class="pairing-note">Every Home Depot leader has a Stripe counterpart at their level. They should never feel out-matched or out-ranked.</p>
-        <div class="room-list">
-          <div class="who keyrow">
-            <div class="pair"><span class="thd">Fran Bell<small>The Home Depot · EVP &amp; CTO · keystone</small></span><span class="vs">↔</span><span class="str">A Stripe founder<small>Stripe · co-founder</small></span></div>
-            <div class="why">Her mandate to build a connected, AI-driven experience <i>is</i> the thesis — so we pair her with a founder on where commerce and AI go next.</div>
-          </div>
-          <div class="who">
-            <div class="pair"><span class="thd">Angie Brown<small>The Home Depot · EVP &amp; CIO</small></span><span class="vs">↔</span><span class="str">Head of Engineering<small>Stripe · senior technologist</small></span></div>
-            <div class="why">Owns the stack and integration reality — paired with the person who can speak to reliability at peak and migration, honestly.</div>
-          </div>
-          <div class="who">
-            <div class="pair"><span class="thd">Richard McPhail<small>The Home Depot · EVP &amp; CFO</small></span><span class="vs">↔</span><span class="str">Stripe CFO<small>Stripe · finance</small></span></div>
-            <div class="why">Turns "transformational" into a funded business case — CFO to CFO, the numbers and the ROI.</div>
-          </div>
-          <div class="who">
-            <div class="pair"><span class="thd">Michael Rowe<small>The Home Depot · EVP, Professional Contractors</small></span><span class="vs">↔</span><span class="str">Head of B2B / Platforms<small>Stripe · embedded finance</small></span></div>
-            <div class="why">The contractor business is the highest-growth payments opportunity — paired with the person who owns contractor financing and platform payments.</div>
-          </div>
-          <div class="who">
-            <div class="pair"><span class="thd">Jordan Broggi<small>The Home Depot · EVP CX &amp; Pres. Online</small></span><span class="vs">↔</span><span class="str">Head of Optimized Checkout<small>Stripe · payments product</small></span></div>
-            <div class="why">Owns conversion and the cross-channel journey — paired with the product leader for checkout and one customer view.</div>
-          </div>
-          <div class="who">
-            <div class="pair"><span class="thd">Ted Decker<small>The Home Depot · Chair &amp; CEO</small></span><span class="vs">↔</span><span class="str">Stripe President / founder<small>Stripe · executive sponsor</small></span></div>
-            <div class="why">A focused CEO-to-founder segment sets the relationship at the top. The named executive sponsor who owns it after.</div>
-          </div>
-        </div>
-      </div>
-      <div class="side">
-        <h4>Three things they walk away believing</h4>
-        <div class="takeaways">
-          <div class="ta"><span class="n">1</span><p><b>Payments holds One Home Depot together</b> — it's the thread that connects every channel, not just a cost to manage.</p></div>
-          <div class="ta"><span class="n">2</span><p><b>Stripe is the right partner today</b> — a retailer their size already runs $5B on one Stripe platform, and it stays up when it matters most.</p></div>
-          <div class="ta"><span class="n">3</span><p><b>Stripe is still the right partner in five years</b> — it keeps adding what's next, so they're never rebuilding.</p></div>
-        </div>
-        <h4>How we keep them engaged</h4>
-        <div class="wow">
-          <div class="w"><span class="star">◆</span><p><b>Show, don't present.</b> The demo and the live build carry the room — not slides.</p></div>
-          <div class="w"><span class="star">◆</span><p><b>Mostly conversation.</b> Each part opens by reflecting back what they told us they care about.</p></div>
-          <div class="w"><span class="star">◆</span><p><b>Everyone has a reason to lean in.</b> Each segment clearly speaks to someone in the room, so no one is a spectator.</p></div>
-        </div>
-      </div>
-    </div>
-    <div class="fmtcall rv">
-      <div class="big">In person.</div>
-      <p><b>Recommendation: do the big one in person.</b> The demo, the founder conversation, and getting all their leaders in one room can't happen on a video call — showing up in person is itself the message that this matters. Set it up so anyone who can't travel can still join the key moments live, and record everything for follow-up. Save video calls for the shorter deep-dives in between.</p>
-    </div>
-    <div class="fmtcall rv" style="background:linear-gradient(110deg,rgba(43,74,58,.09),rgba(255,255,255,.32))">
-      <div class="big" style="color:var(--pine)">Rapport.</div>
-      <p><b>Genuine alignment to leverage:</b> <i>Entrepreneurial Spirit</i> is an explicit Home Depot core value — and Stripe's founding ethos. <i>"Show, don't just sell"</i> is Home Depot's founding service philosophy — so we don't pitch, we <i>show</i> (the live demo). And <i>removing friction</i> is Decker's own language — Stripe's entire value prop. Speak their words back to them.</p>
-    </div>
-    <a class="doclink rv" href="briefing-doc.html">
-      <span class="dl-k">Behind the scenes</span>
-      <span class="dl-t">See how we'd prep the Stripe team before this room →</span>
-      <span class="dl-d">The internal briefing doc — who's in the room, what they care about, exactly what to say and ask. Built for whoever walks in.</span>
-    </a>
-  </div>
-</section>
-
-<!-- WOW -->
-<section id="wow" class="wow-sec">
-  <div class="wrap">
-    <div class="seclabel"><span class="num">07</span><span class="ln"></span><span class="of">The wow factor</span></div>
-    <h2 class="rv">The moments that land</h2>
-    <p class="sub rv">A briefing they'll remember needs a few moments they could not get anywhere else. These are built for The Home Depot specifically — not a Stripe show, their story. Here is what each one actually looks like.</p>
-    <div class="wowcards">
-
-      <div class="wowcard hero rv">
-        <div class="wnum">01</div>
-        <div>
-          <h3>We build both their customers' checkouts, live, before the coffee's cold</h3>
-          <p>Not slides — the real thing, built in the room, for both kinds of Home Depot customer. The do-it-yourself shopper: starts a kitchen project on the app, picks the tile up in the store, returns one box online a week later — and it's all one account, one payment, no friction. The professional contractor (an example flow): loads $14,000 of lumber at the Smyrna store, the same cart already on her phone, checks out on 60-day terms tied to her loyalty account. We wire both up during the session and run live test payments on screen. The first time they go green, the room gets it. <i>Doers ship — so we ship, in front of them.</i></p>
-          <div class="tagm">Both segments, working, in one session</div>
-        </div>
-      </div>
-
-      <div class="wowcard rv">
-        <div class="wnum">02</div>
-        <h3>Their sales, alive on a 20-foot wall</h3>
-        <p><p>Here is what they would see once their payments run on Stripe: a live map of the country, a light for every Home Depot sale as it happens across all 2,300+ stores and every online order, with the day&rsquo;s total ticking up in real time. During spring project season the whole Sun Belt glows. It is the picture you can only paint when in-store, online, and contractor payments finally run on one system &mdash; today that data lives in pieces. We show it as the goal: your business, finally visible in one view.</p>
-        <div class="tagm">The view unified payments unlocks &mdash; shown as the goal</div>
-      </div>
-
-      <div class="wowcard rv">
-        <div class="wnum">03</div>
-        <h3>Two napkins, one table</h3>
-        <p>Open with the 1978 napkin where the founders sketched The Home Depot in a coffee shop after being fired — then set Stripe's own origin napkin next to it. Two companies built from scratch by founders who started with nothing. A shared story, not a sales pitch. It earns the rest of the day.</p>
-        <div class="tagm">Built from scratch — both of us</div>
-      </div>
-
-      <div class="wowcard rv">
-        <div class="wnum">04</div>
-        <h3>A founder in the room</h3>
-        <p>A focused conversation between a Stripe founder and Ted Decker and Fran Bell on where commerce and AI are going next. Not scheduled for everyone, not repeated at public events — rare, and it signals this relationship matters at the very top.</p>
-        <div class="tagm">Top-to-top trust, set in one conversation</div>
-      </div>
-
-      <div class="wowcard rv">
-        <div class="wnum">05</div>
-        <h3>What they carry back into the building</h3>
-        <p><p>Each leader leaves with two things they can show their own team on Monday. First, a working link to the checkout we built together, live on their phone. Second, a short printed recap: the few numbers from their own business we opened with, the pilot we agreed to, and who owns the next step on each side. Not a brochure, a one-page record of what was decided, so the momentum does not evaporate on the flight home.</p>
-        <div class="tagm">They leave with proof and a decision, not a tote bag</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- AGENDA -->
-<section id="agenda">
-  <div class="wrap">
-    <div class="seclabel"><span class="num">08</span><span class="ln"></span><span class="of">The agenda · a day and a half at Stripe</span></div>
-    <h2 class="rv">The full briefing, hour by hour</h2>
-    <p class="sub rv">A real Executive Briefing is an immersive day and a half, not a meeting. Day one builds the case and goes deep with leadership; an evening together earns the relationship; day two gets hands-on and lands on committed actions. The five content pieces and the standout moments are choreographed across the whole arc — here's how it runs.</p>
-
-    <div class="agenda-legend rv">
-      <span><i style="background:var(--amber)"></i> Standout moment</span>
-      <span><i style="background:var(--pine)"></i> Content piece</span>
-      <span><i style="background:rgba(33,30,23,.12)"></i> Hospitality / break</span>
-    </div>
-
-    <!-- DAY 1 -->
-    <div class="dayhead rv"><span class="dd">Day One</span><span class="dn">Build the case, go deep</span><span class="dt">Full day · dinner to follow</span></div>
-    <div class="runshow rv">
-
-      <div class="slot util">
-        <div class="time">8:30<span>30 min</span></div>
-        <div class="body"><h4>Check-in &amp; breakfast</h4></div>
-        <div class="pres"></div>
-      </div>
-
-      <div class="slot">
-        <div class="time">9:00<span>30 min</span></div>
-        <div class="body">
-          <h4>Welcome &amp; voice of the customer</h4>
-          <p>One person on each side opens. The Home Depot's leaders say, in their own words, what "one connected company" needs to become — so the day is built around their goals, not our slides.</p>
-          <div class="tags"><span class="tg who">Everyone</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe host + The Home Depot leaders</span><span class="pr">Opening</span></div>
-      </div>
-
-      <div class="slot peak">
-        <div class="time">9:30<span>30 min</span></div>
-        <div class="body">
-          <h4>Their business, alive on the wall + two napkins</h4>
-          <p>The room opens on a vision of what their business looks like once payments run on one system: a live map, a light for every sale as it happens across stores and online. Then the 1978 coffee-shop origin story, set beside Stripe&rsquo;s own. Two companies built from scratch &mdash; the day starts as a partnership.</p>
-          <div class="tags"><span class="tg wow">Standout moment</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe senior leader</span><span class="pr">Built from scratch</span></div>
-      </div>
-
-      <div class="slot">
-        <div class="time">10:00<span>45 min</span></div>
-        <div class="body">
-          <h4>What we see in your business</h4>
-          <p>Their public numbers turned into a clear picture: where separate payment systems quietly cost them, where bringing it together creates growth. Opens by reflecting back the priorities they sent in advance.</p>
-          <div class="tags"><span class="tg piece">Piece 1 · Their business story</span><span class="tg who">CFO · CEO</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe enterprise lead</span><span class="pr">+ account team</span></div>
-      </div>
-
-      <div class="slot util">
-        <div class="time">10:45<span>15 min</span></div>
-        <div class="body"><h4>Break</h4></div>
-        <div class="pres"></div>
-      </div>
-
-      <div class="slot peak">
-        <div class="time">11:00<span>75 min</span></div>
-        <div class="body">
-          <h4>We build it, live, in the room</h4>
-          <p>The first peak. We wire up both their customers' checkouts — the do-it-yourself shopper across app, store, and online; the professional contractor on terms — and run live test payments on screen. When they go green, the thesis stops being a slide.</p>
-          <div class="tags"><span class="tg wow">Standout moment</span><span class="tg piece">Piece 2 · The demo</span><span class="tg who">CTO · CIO · Contractor &amp; Online leads</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe solutions architects</span><span class="pr">Hands-on build</span></div>
-      </div>
-
-      <div class="slot util">
-        <div class="time">12:15<span>60 min</span></div>
-        <div class="body"><h4>Lunch — with the build live on every phone</h4></div>
-        <div class="pres"></div>
-      </div>
-
-      <div class="slot">
-        <div class="time">1:15<span>45 min</span></div>
-        <div class="body">
-          <h4>A retailer your size already did this</h4>
-          <p>The proof: a comparable retailer that moved $5B of online and in-store sales onto one Stripe platform, and exactly what it got them. Honest about what it took. This is where the risk comes out of the decision.</p>
-          <div class="tags"><span class="tg piece">Piece 3 · Proof it works</span><span class="tg who">CIO · CFO</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe industry lead</span><span class="pr">Customer story</span></div>
-      </div>
-
-      <div class="slot">
-        <div class="time">2:00<span>60 min</span></div>
-        <div class="body">
-          <h4>Deep-dive breakouts, by role</h4>
-          <p>The group splits so each leader goes deep on what they own: economics and cost-to-serve with the CFO; architecture, reliability and migration with the CIO; contractor financing with the contractor-business lead; checkout and conversion with the online lead.</p>
-          <div class="tags"><span class="tg who">Parallel · role-based</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe specialists</span><span class="pr">Four parallel rooms</span></div>
-      </div>
-
-      <div class="slot util">
-        <div class="time">3:00<span>15 min</span></div>
-        <div class="body"><h4>Break</h4></div>
-        <div class="pres"></div>
-      </div>
-
-      <div class="slot">
-        <div class="time">3:15<span>45 min</span></div>
-        <div class="body">
-          <h4>Securing payments &amp; AI at their scale</h4>
-          <p>How Stripe handles fraud, reliability, and security at peak — Black Friday, spring project season — and how the same data safely feeds the AI experience their CTO is chartered to build.</p>
-          <div class="tags"><span class="tg who">CTO · CIO</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe security &amp; risk lead</span><span class="pr">Technical session</span></div>
-      </div>
-
-      <div class="slot">
-        <div class="time">4:00<span>30 min</span></div>
-        <div class="body">
-          <h4>Closing reflections — day one</h4>
-          <p>A short synthesis: what we heard, what landed, and what we'll get hands-on with tomorrow. Sets up day two so no one arrives cold.</p>
-          <div class="tags"><span class="tg who">Everyone</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe host</span><span class="pr">Wrap</span></div>
-      </div>
-
-      <div class="slot peak">
-        <div class="time">6:30<span>Evening</span></div>
-        <div class="body">
-          <h4>Dinner — the founder conversation</h4>
-          <p>An unhurried dinner. A Stripe founder, Ted Decker, and Fran Bell on where commerce and AI are going next — no slides, no pitch. The relationship is built here as much as in any session.</p>
-          <div class="tags"><span class="tg wow">Standout moment</span><span class="tg piece">Piece 4 · What's coming</span><span class="tg who">CEO · CTO · founders</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe founder + leadership</span><span class="pr">Hosted dinner</span></div>
-      </div>
-
-    </div>
-
-    <!-- DAY 2 -->
-    <div class="dayhead rv"><span class="dd">Day Two</span><span class="dn">Get hands-on, commit to action</span><span class="dt">Morning · close by lunch</span></div>
-    <div class="runshow rv">
-
-      <div class="slot util">
-        <div class="time">8:00<span>30 min</span></div>
-        <div class="body"><h4>Check-in &amp; breakfast</h4></div>
-        <div class="pres"></div>
-      </div>
-
-      <div class="slot peak">
-        <div class="time">8:30<span>45 min</span></div>
-        <div class="body">
-          <h4>Executive meeting with Stripe leadership</h4>
-          <p>The top-to-top moment, in three beats: quick introductions; the next chapter of the relationship, with Stripe evoking confidence it's built for The Home Depot's transformation and its bet on AI; and a clear signal that we'll capture tangible actions to act on right after, to accelerate their outcomes.</p>
-          <div class="tags"><span class="tg wow">Standout moment</span><span class="tg who">CEO · CFO · CTO</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe founder / President</span><span class="pr">Executive meeting</span></div>
-      </div>
-
-      <div class="slot">
-        <div class="time">9:15<span>90 min</span></div>
-        <div class="body">
-          <h4>Co-build working session</h4>
-          <p>Not watching — doing. The Home Depot's team and Stripe build together on a real flow of their choosing, picking up the live demo from day one and pushing it further. Doers ship.</p>
-          <div class="tags"><span class="tg who">Technical teams · both sides</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe + The Home Depot engineers</span><span class="pr">Hands-on</span></div>
-      </div>
-
-      <div class="slot util">
-        <div class="time">10:45<span>15 min</span></div>
-        <div class="body"><h4>Break</h4></div>
-        <div class="pres"></div>
-      </div>
-
-      <div class="slot">
-        <div class="time">11:00<span>45 min</span></div>
-        <div class="body">
-          <h4>The 2026 roadmap, together</h4>
-          <p>We turn the two days into a shared plan: which flow to pilot first, what success looks like, and how it ladders to "one connected company." The customization framework, applied live to their priorities.</p>
-          <div class="tags"><span class="tg piece">Piece 5 · The pre-read &amp; plan</span><span class="tg who">Everyone</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe account team + leads</span><span class="pr">Planning</span></div>
-      </div>
-
-      <div class="slot peak">
-        <div class="time">11:45<span>30 min</span></div>
-        <div class="body">
-          <h4>Tangible actions &amp; close</h4>
-          <p>We don't close on a thank-you. We agree the next steps in the room — a scoped pilot, an owner named on each side, dates tied to their timeline. Each leader leaves with the working build and a personalized recap to carry back inside.</p>
-          <div class="tags"><span class="tg wow">Take-home</span><span class="tg who">Everyone</span></div>
-        </div>
-        <div class="pres"><span class="pn">Stripe host + executive sponsor</span><span class="pr">Commitment</span></div>
-      </div>
-
-      <div class="slot util">
-        <div class="time">12:15<span>—</span></div>
-        <div class="body"><h4>Lunch &amp; departures</h4></div>
-        <div class="pres"></div>
-      </div>
-
-    </div>
-
-    <div class="agenda-note rv"><span class="mono">Note →</span><span>This is the full in-person flagship. The same five pieces re-sequence for lighter moments too — a 45-minute video deep-dive (one piece, mostly Q&amp;A) or a working dinner (the founder conversation, no slides). Same building blocks, right-sized to the room. Stripe presenter names shown by role; The Home Depot attendees are their real executives.</span></div>
-  </div>
-</section>
-
-<!-- PHASES -->
-<section id="phases">
-  <div class="wrap">
-    <div class="seclabel"><span class="num">09</span><span class="ln"></span><span class="of">Before &amp; after the meeting</span></div>
-    <h2 class="rv">The work around the meeting</h2>
-    <p class="sub rv">The briefing is the high point, but it's not the whole plan. What we do beforehand earns the room. What we do afterward turns a good meeting into a real deal.</p>
-    <div class="phases">
-      <div class="phase rv">
-        <div class="pl">Before</div>
-        <h3>Earn the room</h3>
-        <div class="qa"><div class="q"><span class="qi">→</span>Get the Stripe team aligned first</div><div class="a">Map out who at Stripe already knows who at The Home Depot, agree on one story everyone tells, and build the plan with the team that owns the relationship — never around them.</div></div>
-        <div class="qa"><div class="q"><span class="qi">→</span>Bring in new people as the need arises</div><div class="a">As their org changes (a new CTO, a growing professional-contractor business), line up the right Stripe counterpart. Bring an executive in when there's a clear reason and we've done their prep for them.</div></div>
-        <div class="qa"><div class="q"><span class="qi">→</span>Find out what we can't Google</div><div class="a">How their payments actually work today, how big the professional-contractor business really is, their plans for contractor billing, and what "friction" means to them. We ask them directly — we don't guess.</div></div>
-        <div class="qa"><div class="q"><span class="qi">→</span>Send a pre-read that gets them excited</div><div class="a">"Here's what we see in your business," built from their own numbers — plus a personal invite from a senior leader, a question we ask them to answer ahead of time, and a teaser of one big moment. Logistics go in a separate note.</div></div>
-        <div class="qa"><div class="q"><span class="qi">→</span>Prep differently for video vs. in person</div><div class="a">In person gets the full high-touch treatment. Video calls get kept short, everyone on camera, someone watching the chat, and a recording sent after. A video call is never just a shrunk-down version of the in-person one.</div></div>
-      </div>
-      <div class="phase rv">
-        <div class="pl">After</div>
-        <h3>Turn it into a deal</h3>
-        <div class="qa"><div class="q"><span class="qi">→</span>Get feedback while it's fresh</div><div class="a">A quick Stripe debrief within 24 hours, two or three easy questions to the attendees, and — most useful — one-on-one calls with Bell and our champion to hear what the room wouldn't say out loud.</div></div>
-        <div class="qa"><div class="q"><span class="qi">→</span>Agree on the next step, together</div><div class="a">Never end without a clear next step and a date, decided in the room: someone at The Home Depot owns it, someone at Stripe owns it, and it's tied to their own timeline.</div></div>
-        <div class="qa"><div class="q"><span class="qi">→</span>Move faster by proving it</div><div class="a">Turn the energy into a small pilot on one of their real payment flows. Measure it — more approved transactions, higher conversion, less fraud — so every later conversation rests on results, not promises.</div></div>
-        <div class="qa"><div class="q"><span class="qi">→</span>Stay close between meetings</div><div class="a">The senior sponsor keeps in personal touch, the Stripe technologist keeps the CTO's thread warm, and what landed in this meeting shapes the next one. Each touch makes the next one easier.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BEYOND -->
-<section class="beyond">
-  <div class="wrap">
-    <div class="seclabel"><span class="num">10</span><span class="ln"></span><span class="of">A few ideas that go past the brief</span></div>
-    <h2>Where I'd push further</h2>
-    <div class="blist">
-      <div class="bx"><div class="bk">It keeps working</div><h4>The five pieces outlast this meeting</h4><p>Kept current, they become a library the team reuses for every account. That's the real reason a two-day briefing can still be excellent — the pieces are always ready.</p></div>
-      <div class="bx"><div class="bk">Do it again</div><h4>"Here's what we see in your business"</h4><p>The personalized piece built from a customer's own public numbers works for any major account, not just this one. The Home Depot is the first, not the only.</p></div>
-      <div class="bx"><div class="bk">Timing</div><h4>Start with the new CTO</h4><p>A brand-new CTO arrived in April 2026 with a mandate to build a connected, AI-driven experience. She's writing her plan right now — and Stripe should be one of the inputs to it. That timing won't come around again soon.</p></div>
-      <div class="bx"><div class="bk">The real prize</div><h4>Payments data is what feeds the AI</h4><p>The AI she wants to build needs clean, real-time data from across the business. Separate payment systems can't give it that; one connected system can. That's how "payments" becomes "the future you're trying to build."</p></div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div class="ft-l">
-        <div class="fm">"Make the customer the protagonist. Stripe is the partner who makes their vision real."</div>
-      </div>
-      <div class="ft-r">
-        2026 EXECUTIVE ENGAGEMENT PLAN<br>
-        THE HOME DEPOT × STRIPE<br>
-        PREPARED BY DANIELLE CHAUNCEY
-      </div>
-    </div>
+  <footer>
     <div class="disclaimer">
-      Fictional case exercise prepared for an interview. All Home Depot and Stripe facts are drawn from public sources (company IR/newsroom pages, stripe.com) and were fact-checked; figures are company-stated and point-in-time. Not affiliated with, endorsed by, or representing The Home Depot or Stripe. No confidential information is used. Executive roster current as of mid-2026 and should be re-verified before any real engagement.
+      Fictional case exercise. Example briefing doc for an illustrative Home Depot executive engagement. All facts drawn from public sources; figures are company-stated and point-in-time. Attendees are real Home Depot executives; Stripe presenters are shown by role. Not affiliated with, endorsed by, or representing The Home Depot or Stripe. No confidential information is used.
     </div>
-  </div>
-</footer>
+  </footer>
+</div>
 
 <script>
-const ROLES = [
-  {
-    id:'decker', nm:'Ted Decker', ttl:'Chair, President & CEO', key:false,
-    cares:'The interconnected-retail vision, removing friction, the "project retailer" narrative, and shareholder value.',
-    cut:'Payments is the connective tissue of One Home Depot. Stripe is the partner who makes "seamless" real — and keeps you ahead of where commerce is going.',
-    moment:'The founder dinner on day one — a top-to-top conversation about where commerce and AI are going.',
-    walk:'Stripe is a strategic partner in our transformation — not a vendor.'
+// Meeting types — the doc adapts its objectives + framing to the purpose of the meeting
+const TYPES = {
+  ebc: {
+    label:'Flagship EBC',
+    note:'<b>The day-and-a-half Executive Briefing at Stripe HQ.</b> Multi-stakeholder, multiple outcomes, the full content kit. This is the example shown in detail below.'
   },
-  {
-    id:'mcphail', nm:'Richard McPhail', ttl:'EVP & CFO', key:false,
-    cares:'Margin, cost-to-serve, capital efficiency, and risk.',
-    cut:'Unified payments is a margin and growth lever: recovered revenue from authorization-rate lift, lower cost-to-serve, fraud as one managed system, and capital freed from running three stacks.',
-    moment:'"What we see in your business," then the proof — a retailer their size and exactly what it earned them.',
-    walk:'This is a margin and growth lever — and the ROI is real and referenced.'
+  relationship: {
+    label:'Relationship-building',
+    note:'<b>First serious exec meeting.</b> Goal is trust and a shared vision, not a hard ask. Objectives soften: open the relationship, set the cadence, earn the EBC. Talking points lead with their world; the only "ask" is a next date.'
   },
-  {
-    id:'brown', nm:'Angie Brown', ttl:'EVP & CIO', key:false,
-    cares:'Unifying the stack, reliability at peak, integration cost, and vendor sprawl.',
-    cut:'One platform replaces fragmented systems. 99.999% uptime when it matters most — spring season, Black Friday. Ship new capability without re-integrating every time.',
-    moment:'The live build, plus the day-one session on security and reliability at peak scale.',
-    walk:'Stripe reduces my integration burden — and won\'t break at peak.'
+  deepdive: {
+    label:'Technical deep-dive',
+    note:'<b>Go deep on one capability or problem</b> (e.g. contractor financing, peak reliability). Smaller room, mostly the CTO/CIO and their teams. Objectives narrow to one topic; talking points get technical; the ask is usually a scoped pilot or a test.'
   },
-  {
-    id:'bell', nm:'Fran Bell', ttl:'EVP & CTO', key:true,
-    cares:'Building one connected, AI-driven experience across associates, do-it-yourself shoppers, and professional contractors.',
-    cut:'Payments data is the fuel for the interconnected, AI-driven experience you\'re chartered to build. Stripe is the programmable, AI-forward layer underneath it — not a payments vendor, an innovation substrate.',
-    moment:'The live build on day one, then the founder conversation on what is coming next.',
-    walk:'Stripe is the innovation substrate for my mandate.'
+  deal: {
+    label:'Deal acceleration',
+    note:'<b>Move the deal forward.</b> Prove value on their data, scope the pilot, and ask for commitment. Every objective ties to a decision window. Talking points lead with proof and ROI; the ask is specific and dated.'
   },
-  {
-    id:'rowe', nm:'Michael Rowe', ttl:'EVP · Professional Contractors', key:false,
-    cares:'Growing the professional-contractor business, their digital workspace, and contractor loyalty over time.',
-    cut:'Built-in financing and one checkout that works everywhere turns payments into a way to win contractors and keep them — across the whole life of a project.',
-    moment:'The live build of the contractor checkout — $14K on terms, recognized across app, store, and invoice.',
-    walk:'Stripe helps me win — and keep — professional contractors.'
-  },
-  {
-    id:'broggi', nm:'Jordan Broggi', ttl:'EVP CX · Pres. Online', key:false,
-    cares:'Online conversion, checkout experience, and the cross-channel customer journey.',
-    cut:'Optimized checkout, Link, and a cross-channel payment token mean higher conversion and a single customer view — from the app, to the aisle, to the invoice.',
-    moment:'The live build of the do-it-yourself journey — app to store to online return, all one account.',
-    walk:'Stripe lifts conversion — and unifies the journey.'
+  winback: {
+    label:'Win-back / escalation',
+    note:'<b>Reset a strained relationship</b> after a service issue or a competitive loss. Open by owning the problem, not selling. Objectives focus on restoring trust and a concrete path forward; the ask is permission to re-earn the business.'
   }
-];
+};
+let activeType = 'ebc';
 
-const KIT = [
-  {id:'1',nm:'A story about their business',feat:false,desc:'We take The Home Depot\'s own public numbers — $164.7B in sales, 2,359 stores, the growing professional-contractor business, their plan to become one connected company — and use them to show where having separate payment systems is quietly costing them money, and where bringing it together would help them grow.',move:'It is about them, not us. They see their own business in the first five minutes.',
-    ops:{built:'Interactive one-page brief (also exports to PDF)',fresh:'Auto-rebuilds from their newest quarterly filing the day it posts',lives:'On the account record in Salesforce + the team content library (Highspot)'}},
-  {id:'2',nm:'A demo on their own checkout',feat:true,desc:'Not a generic Stripe demo. We show Stripe running a Home Depot–style checkout for both their customers: a do-it-yourself shopper who starts on the app, picks up in the store, and returns online — all one account; and a professional contractor recognized whether she buys in the app, in the store, or on an invoice.',move:'Seeing it on both their customers makes "one connected company" real instead of a phrase.',
-    ops:{built:'A live Stripe sandbox built on test-mode data',fresh:'Rebuilt and versioned with each Stripe product release',lives:'A shared demo repo (GitHub) the solutions team clones per account'}},
-  {id:'3',nm:'Proof that someone like them did it',feat:false,desc:'The URBN story (Urban Outfitters, Anthropologie, Free People): a retailer their size that moved $5 billion of online and in-store sales onto one Stripe platform across roughly 600–700 stores — one customer view, returns that work across channels, buy-online-pick-up-in-store.',move:'"A retailer your size already did this, and here is what they got." It takes the risk out of the decision.',
-    ops:{built:'A one-page customer story with the numbers',fresh:'Updated when Stripe publishes new figures or a closer-fit retail case lands',lives:'The sales enablement library (Highspot)'}},
-  {id:'4',nm:'A point of view on what is coming',feat:false,desc:'Where payments and AI are heading next, and why Stripe is the partner for the long haul — not just the right choice today. This is the piece that speaks directly to their new CTO and her job of building an AI-driven experience.',move:'Answers the real question behind the meeting: "will this partner still be the right one in five years?"',
-    ops:{built:'A short written point of view plus a 2-minute leader video',fresh:'Refreshed after major Stripe launches and the annual Stripe Sessions',lives:'The team content library, tagged by theme'}},
-  {id:'5',nm:'A pre-read we send before the meeting',feat:false,desc:'A short briefing we send each leader ahead of time. It says plainly why we are meeting, what they will walk away with, and the agenda for the day — written around their goals, not ours. One page: the objective of the engagement, three outcomes they can expect, and what we will ask of them. So they arrive knowing exactly what this is and why it is worth their time.',move:'No one walks in cold or wondering what the meeting is for. We set the objectives and outcomes together, before the day even starts.',
-    ops:{built:'A one-page pre-read per attendee — objective, outcomes, agenda',fresh:'Built from the same numbers as piece 1, refreshed each quarter',lives:'Sent by the account team, logged to the customer record in Salesforce'},
-    link:{href:'pre-read.html',label:'See the pre-read we\'d send The Home Depot →'}}
-];
+// The filled-in briefing doc (THD flagship EBC)
+const DOC = {
+  logistics: [
+    ['Meeting','The Home Depot Executive Briefing — Day-and-a-half, Stripe HQ'],
+    ['Format','In person, hybrid-capable · recorded for follow-up'],
+    ['Who requested & why','Stripe account team, to move from intro conversations to a committed payments-modernization pilot. Timed to the new CTO building her 2026 agenda.'],
+    ['Stripe account owner','Account exec + solutions engineer (lead the build sessions)'],
+    ['Stripe exec sponsor','Senior enterprise leader — owns the relationship top-to-top, present at the founder dinner and the executive meeting'],
+    ['Relationship temperature','<span class="temp neutral">Warming</span> Early but real; strong technical interest, no commercial commitment yet']
+  ],
+  attendees: [
+    ['FB','Fran Bell','EVP & CTO — keystone','Started April 2026. Chartered to build an enterprise-wide, AI-driven, connected experience across associates, do-it-yourself shoppers, and contractors.','Her mandate IS our thesis. Make her the hero — frame payments data as the fuel for what she\'s building.',true],
+    ['AB','Angie Brown','EVP & CIO','Owns the stack and the integration reality. Cares about reliability at peak and not adding vendor sprawl.','Reassure on migration burden and uptime. Don\'t over-promise simplicity; be concrete.',false],
+    ['RM','Richard McPhail','EVP & CFO','Owns the business case. Margin, cost-to-serve, capital efficiency, risk.','Lead with the numbers and the URBN proof. He turns vision into funding.',false],
+    ['MR','Michael Rowe','EVP, Professional Contractors','Growing the contractor business and its digital workspace; contractor loyalty.','The contractor checkout build is for him — highest-value, most differentiated.',false],
+    ['JB','Jordan Broggi','EVP CX & President, Online','Owns conversion and the cross-channel journey.','The do-it-yourself journey build is for him — app to store to online, one account.',false]
+  ],
+  company:[
+    '<b>The Home Depot</b> — world\'s largest home-improvement retailer. FY2025 net sales $164.7B (+3.2%); 2,359 stores plus 1,250+ SRS locations; 470,000+ associates.',
+    'Strategy is "One Home Depot" — an interconnected-retail push blending physical and digital for both the do-it-yourself shopper and the professional contractor. CEO Ted Decker frames it as a "project retailer" investing to "remove friction."',
+    'Recent moves that matter: a new EVP & CTO (April 2026) with an AI/connected-experience mandate; a free contractor digital workspace; an AI tool that builds contractor material lists. SRS Distribution acquisition expanded the contractor/distribution footprint.'
+  ],
+  objectives:[
+    {
+      n:'Objective 1',
+      outcome:'Get agreement that payments is strategic infrastructure for One Home Depot — not a cost line.',
+      background:'They run in-store, online, and contractor payments on systems that don\'t talk. That fragmentation quietly costs them and blocks the connected experience their CTO is chartered to build.',
+      why:'Their CTO is writing her 2026 agenda right now. If payments isn\'t framed as strategic in the next quarter, it gets scoped as an IT line item and we lose the altitude.',
+      tps:['"You\'ve said you\'re becoming one connected company. Payments is the thread that either connects every channel or keeps them apart."','"A retailer your size already proved this — URBN put $5B of online and in-store onto one platform."'],
+      ask:'Agreement to treat payments as a strategic workstream in the 2026 plan, with a named executive sponsor on their side.'
+    },
+    {
+      n:'Objective 2',
+      outcome:'Secure a scoped pilot on one real flow — the contractor checkout.',
+      background:'The contractor business is their highest-growth, most differentiated segment. A working cross-channel contractor checkout is the fastest way to prove the thesis on their own data.',
+      why:'We build it live during the EBC. The momentum from seeing it work is the moment to ask — don\'t let it cool.',
+      tps:['"We just built your contractor checkout in this room. Let\'s put it in front of real contractors and measure it."','"Small enough to start in weeks, real enough to prove the model — then we scale on evidence."'],
+      ask:'Commitment to a scoped contractor-checkout pilot, with an owner named on each side and a start date before end of quarter.'
+    }
+  ],
+  account:{
+    health:'Early-stage but genuinely warm on the technology side. Strong intellectual buy-in from the CTO and her team; no commercial commitment yet. The gap is proof and a business case, not interest.',
+    wins:['Repeated inbound technical interest from the new CTO\'s org','The connected-experience mandate maps almost exactly to our thesis'],
+    redflags:['CFO will want hard ROI, not vision — bring the URBN numbers, don\'t hand-wave','Don\'t over-claim "rip and replace is easy" to the CIO — be honest about migration','Their incumbent payments stack isn\'t public; don\'t assume — ask, in the deep-dive breakouts'],
+    competitive:'Assume incumbent processors and at least one large competitor are also courting them. Our edge is the unified platform + the innovation/AI roadmap, not price.'
+  },
+  appendix:[
+    '<b>Appendix A — URBN proof point.</b> Urban Outfitters / Anthropologie / Free People consolidated $5B of online and in-store revenue onto one Stripe platform across ~600–700 stores: one customer view, cross-channel returns, buy-online-pickup-in-store. The closest public analog to THD\'s ambition.',
+    '<b>Appendix B — the live build.</b> During the EBC we wire up two real flows: the do-it-yourself journey (app → store → online return, one account) and the contractor checkout ($14K on terms, recognized across channels). Test payments run live on screen.',
+    '<b>Appendix C — prior contact.</b> [Account team fills in: dates and outcomes of prior Stripe ↔ Home Depot conversations, so the exec walks in knowing the history.]'
+  ]
+};
 
-// render execs + panel
-const execEl = document.getElementById('execs');
-const panelEl = document.getElementById('panel');
-let active = 'bell';
-
-ROLES.forEach(r=>{
+const typesEl=document.getElementById('types');
+const noteEl=document.getElementById('typenote');
+Object.entries(TYPES).forEach(([k,v])=>{
   const b=document.createElement('button');
-  b.className='exec';b.setAttribute('aria-pressed', r.id===active);b.dataset.id=r.id;b.setAttribute('role','tab');
-  b.innerHTML=`${r.key?'<span class="key">KEYSTONE</span>':''}<div class="role-mono">${r.ttl.split('·')[0].trim()}</div><div class="nm">${r.nm}</div><div class="ttl">${r.ttl}</div>`;
-  b.addEventListener('click',()=>select(r.id));
-  execEl.appendChild(b);
+  b.className='type';b.dataset.k=k;b.setAttribute('aria-pressed',k===activeType);
+  b.innerHTML=`<span class="tt">${v.label}</span>`;
+  b.onclick=()=>{activeType=k;[...typesEl.children].forEach(c=>c.setAttribute('aria-pressed',c.dataset.k===k));noteEl.innerHTML=TYPES[k].note;};
+  typesEl.appendChild(b);
 });
+noteEl.innerHTML=TYPES[activeType].note;
 
-function renderPanel(r){
-  panelEl.innerHTML=`
-    <div class="swap">
-      <div class="panel-head"><span class="pn">${r.nm}</span><span class="pt">${r.ttl}</span></div>
-      <div class="panel-grid">
-        <div class="pfield"><div class="lab">What they care about</div><p>${r.cares}</p></div>
-        <div class="pfield"><div class="lab">How we frame it for them</div><p class="cut">${r.cut}</p></div>
-        <div class="pfield"><div class="lab">The moment in the day built for them</div><p>${r.moment}</p></div>
-        <div class="pfield"><div class="lab">How we open with them</div><p>Reflect their own priorities back first; arrive at Stripe as the means, never the headline.</p></div>
-        <div class="walkaway"><span class="qm">"</span><div><div class="wt">The walk-away</div><div class="wq">${r.walk}</div></div></div>
-      </div>
-    </div>`;
-}
-function select(id){
-  active=id;
-  [...execEl.children].forEach(c=>c.setAttribute('aria-pressed', c.dataset.id===id));
-  renderPanel(ROLES.find(r=>r.id===id));
-}
-renderPanel(ROLES.find(r=>r.id===active));
+// render the doc body (the filled-in EBC example)
+function sec(n,title,inner){return `<div class="sec"><div class="sechead"><span class="sn">${n}</span><h2>${title}</h2></div><div class="seccontent">${inner}</div></div>`;}
 
-// render kit
-const kitEl=document.getElementById('kit-grid');
-KIT.forEach(k=>{
-  const d=document.createElement('div');
-  d.className='block'+(k.feat?' feat':'');
-  d.innerHTML=`<div class="bid">Piece ${k.id}</div><h3>${k.nm}</h3><p class="desc">${k.desc}</p><div class="move"><b>Why it works</b>${k.move}</div>`+
-    `<div class="ops"><div class="op"><span>Built as</span>${k.ops.built}</div><div class="op"><span>Kept fresh</span>${k.ops.fresh}</div><div class="op"><span>Lives in</span>${k.ops.lives}</div></div>`+
-    (k.link?`<a class="kitlink" href="${k.link.href}">${k.link.label}</a>`:'');
-  kitEl.appendChild(d);
-});
+let html='';
+// A. logistics
+html+=sec('A','Logistics',`<div class="lgrid">${DOC.logistics.map(([k,v])=>`<div class="lrow"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('')}</div>`);
+// B. attendees
+html+=sec('B','Who\'s in the room',DOC.attendees.map(([av,nm,ttl,bio,read,key])=>`<div class="att${key?' key':''}"><div class="av">${av}</div><div><div class="nm">${nm} <span>· ${ttl}</span></div><div class="bio">${bio}</div><div class="read"><b>How to play it:</b> ${read}</div></div></div>`).join(''));
+// C. company
+html+=sec('C','Company profile',DOC.company.map(p=>`<p class="body">${p}</p>`).join(''));
+// D. objectives
+html+=sec('D','Objectives — the script',DOC.objectives.map(o=>`<div class="obj"><div class="on">${o.n}</div><div class="outcome">${o.outcome}</div>
+  <div class="scriptrow"><div class="sl">Background</div><div class="sv">${o.background}</div></div>
+  <div class="scriptrow why"><div class="sl">Why now</div><div class="sv">${o.why}</div></div>
+  <div class="scriptrow"><div class="sl">Say this</div><div class="sv">${o.tps.map(t=>`<span class="tp">${t}</span>`).join('')}</div></div>
+  <div class="scriptrow ask"><div class="sl">The ask</div><div class="sv">${o.ask}</div></div>
+</div>`).join(''));
+// E. account background
+html+=sec('E','Account background',`<p class="body"><b>Health:</b> ${DOC.account.health}</p>
+  <p class="body" style="margin-top:16px"><b>Wins to build on</b></p><ul class="tight">${DOC.account.wins.map(w=>`<li>${w}</li>`).join('')}</ul>
+  <p class="body" style="margin-top:16px"><b>Red flags &amp; what to avoid</b></p><ul class="tight redflag">${DOC.account.redflags.map(r=>`<li>${r}</li>`).join('')}</ul>
+  <p class="body" style="margin-top:16px"><b>Competitive:</b> ${DOC.account.competitive}</p>`);
+// F. appendix
+html+=sec('F','Appendices',DOC.appendix.map(a=>`<p class="body">${a}</p>`).join('<div style="height:12px"></div>'));
 
-// scroll reveal
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-// hero reveals immediately
-document.querySelectorAll('.hero .rv').forEach(el=>el.classList.add('in'));
-
-// scroll progress
-const prog=document.getElementById('prog');
-addEventListener('scroll',()=>{
-  const h=document.documentElement;
-  prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
-},{passive:true});
+document.getElementById('docbody').innerHTML=html;
 </script>
 </body>
 </html>
