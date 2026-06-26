@@ -522,6 +522,23 @@
   .pj p{font-size:14.5px;color:var(--ink-soft);line-height:1.5}
   .pj p b{color:var(--ink)}
 
+  /* ---------- why this format ---------- */
+  .fmt2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+  @media(max-width:760px){.fmt2{grid-template-columns:1fr}}
+  .fmt-col{border:1px solid var(--line);border-radius:13px;padding:28px;background:rgba(255,255,255,.32)}
+  .fmt-col:last-child{background:var(--ink)}
+  .fmt-col .fmt-k{font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:16px}
+  .fmt-col:last-child .fmt-k{color:var(--amber-bright)}
+  .fmt-intro{font-size:14px;color:rgba(241,233,218,.7);line-height:1.5;margin-bottom:14px;font-style:italic}
+  .fmt-list{list-style:none}
+  .fmt-list li{font-size:14.5px;line-height:1.5;padding:11px 0 11px 20px;border-top:1px solid var(--line-2);position:relative;color:var(--ink-soft)}
+  .fmt-list li:first-child{border-top:none}
+  .fmt-list li::before{content:"";position:absolute;left:0;top:18px;width:11px;height:1px;background:var(--amber)}
+  .fmt-list li b{color:var(--ink)}
+  .fmt-col:last-child .fmt-list li{color:rgba(241,233,218,.72);border-color:rgba(241,233,218,.12)}
+  .fmt-col:last-child .fmt-list li b{color:var(--paper)}
+  .fmt-col:last-child .fmt-list li::before{background:var(--amber-bright)}
+
   /* ---------- beyond ---------- */
   .beyond{background:var(--ink);color:var(--paper);border-radius:0}
   .beyond .seclabel .num{color:var(--amber-bright)}
@@ -560,6 +577,7 @@
       <a href="#plan">2026 Plan</a>
       <a href="#phases">Before</a>
       <a href="#post">After</a>
+      <a href="#format">The Format</a>
     </nav>
   </div>
 </header>
@@ -631,8 +649,8 @@
 <section id="plan">
   <div class="wrap">
     <div class="seclabel"><span class="num">04</span><span class="ln"></span><span class="of">The 2026 plan · our recommendation</span></div>
-    <h2 class="rv">Four touchpoints. Each one a decision, not a maybe.</h2>
-    <p class="sub rv">This is the plan, with an opinion. For each moment we've committed to a purpose, a format, and the reason behind it — then sequenced them so each earns the next. Click any touchpoint to see the call we'd make and why.</p>
+    <h2 class="rv">Four touchpoints across 2026</h2>
+    <p class="sub rv">For each one, we've chosen a purpose, a format, and a reason — and sequenced them so each sets up the next. Click any touchpoint to see what we'd do and why.</p>
 
     <div class="tl rv" id="tl"></div>
     <div class="tl-panel" id="tlpanel"></div>
@@ -643,8 +661,8 @@
 <section id="phases">
   <div class="wrap">
     <div class="seclabel"><span class="num">05</span><span class="ln"></span><span class="of">Pre-engagement · the groundwork</span></div>
-    <h2 class="rv">Before any touchpoint: align the team, gather the truth, prep the room</h2>
-    <p class="sub rv">A good engagement plan starts inside Stripe, not with The Home Depot. Three things have to happen before any moment lands: get our own people rowing together, learn what we can't find in a database, and prepare The Home Depot for the specific kind of experience they're walking into.</p>
+    <h2 class="rv">The work before any touchpoint</h2>
+    <p class="sub rv">Good engagement starts inside Stripe, before we ever reach out. Three things to get right first: align our own team, learn what we can't find in a database, and prepare The Home Depot for the kind of experience they're walking into.</p>
 
     <div class="steptabs rv" id="steptabs">
       <button class="steptab" data-s="s1" aria-pressed="true"><span class="st-n">01</span><span class="st-t">Align the team</span></button>
@@ -727,9 +745,9 @@
 <!-- POST-ENGAGEMENT -->
 <section id="post" class="room">
   <div class="wrap">
-    <div class="seclabel"><span class="num">06</span><span class="ln"></span><span class="of">Post-engagement · where the deal is won</span></div>
-    <h2 class="rv">After the briefing: turn momentum into a deal</h2>
-    <p class="sub rv">The briefing creates energy. The deal is won or lost in what happens next. Most teams let the momentum cool — this is the part of the plan built so it doesn't. Here's the journey from "great meeting" to signed pilot to expansion.</p>
+    <div class="seclabel"><span class="num">06</span><span class="ln"></span><span class="of">Post-engagement · what happens next</span></div>
+    <h2 class="rv">What happens after the briefing</h2>
+    <p class="sub rv">A good briefing creates energy, and most teams let it cool. This is the part of the plan built so it doesn't — the steps from a strong meeting to a working pilot to an expanded relationship.</p>
 
     <div class="postjourney rv">
       <div class="pj">
@@ -767,13 +785,44 @@
   </div>
 </section>
 
+<!-- WHY THIS FORMAT -->
+<section id="format">
+  <div class="wrap">
+    <div class="seclabel"><span class="num">07</span><span class="ln"></span><span class="of">Why a page, not a deck — and how we'd run it safely</span></div>
+    <h2 class="rv">A note on the format itself</h2>
+    <p class="sub rv">You're reading this as a web page, not a PowerPoint. That's a deliberate choice — and if Stripe adopted it, there's a right way and a wrong way to do it. Here's the thinking on both.</p>
+
+    <div class="fmt2">
+      <div class="fmt-col rv">
+        <div class="fmt-k">Why this beats a deck</div>
+        <ul class="fmt-list">
+          <li><b>It's built for the AI age.</b> A page like this can be generated and personalized for each customer in minutes — from their own public data — instead of a designer rebuilding a deck every time.</li>
+          <li><b>It's a living thing, not a dead file.</b> It lives at a link, updates in place, and is version-controlled. No more "deck_v7_FINAL_v2" by email.</li>
+          <li><b>The reader picks their own view.</b> A CFO sees the CFO's version, a CTO sees theirs — instead of everyone sitting through the same fixed slides.</li>
+          <li><b>It's reusable.</b> The same structure becomes the template for the next account. Build once, re-cut fast.</li>
+        </ul>
+      </div>
+      <div class="fmt-col rv">
+        <div class="fmt-k">How we'd run it securely at Stripe</div>
+        <p class="fmt-intro">These are real problems, and I'd rather name them than pretend they're solved:</p>
+        <ul class="fmt-list">
+          <li><b>Not a public link.</b> For a real customer this wouldn't live on a public URL — it'd sit behind Stripe SSO or a private, expiring link, access logged.</li>
+          <li><b>Nothing confidential in the page itself.</b> Client-side HTML is fully visible in the source. Anything sensitive (real numbers, deal terms) stays server-side or out entirely — the page references, it doesn't embed.</li>
+          <li><b>Reviewed like any tool.</b> Any host gets a security review; data residency and retention handled to Stripe's bar before a customer ever sees it.</li>
+          <li><b>Honest tradeoff.</b> A deck is "safe" because it's inert and familiar. This is more powerful but asks more of us on security — and that's a tradeoff worth making deliberately, not by accident.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- BEYOND -->
 <section class="beyond">
   <div class="wrap">
-    <div class="seclabel"><span class="num">07</span><span class="ln"></span><span class="of">A few ideas that go past the brief</span></div>
-    <h2>Where I'd push further</h2>
+    <div class="seclabel"><span class="num">08</span><span class="ln"></span><span class="of">A few ideas that go past the brief</span></div>
+    <h2>Going beyond the brief</h2>
     <div class="blist">
-      <div class="bx"><div class="bk">It keeps working</div><h4>The five pieces outlast this meeting</h4><p>Kept current, they become a library the team reuses for every account. That's the real reason a two-day briefing can still be excellent — the pieces are always ready.</p></div>
+      <div class="bx"><div class="bk">It keeps working</div><h4>The five pieces outlast any single touchpoint</h4><p>Kept current, they become a library the team reuses across the whole year — and for every other account. That's the real reason any touchpoint, even one pulled together in days, can still feel built-to-order: the pieces are always ready.</p></div>
       <div class="bx"><div class="bk">Do it again</div><h4>"Here's what we see in your business"</h4><p>The personalized piece built from a customer's own public numbers works for any major account, not just this one. The Home Depot is the first, not the only.</p></div>
       <div class="bx"><div class="bk">Timing</div><h4>Start with the new CTO</h4><p>A brand-new CTO arrived in April 2026 with a mandate to build a connected, AI-driven experience. She's writing her plan right now — and Stripe should be one of the inputs to it. That timing won't come around again soon.</p></div>
       <div class="bx"><div class="bk">The real prize</div><h4>Payments data is what feeds the AI</h4><p>The AI she wants to build needs clean, real-time data from across the business. Separate payment systems can't give it that; one connected system can. That's how "payments" becomes "the future you're trying to build."</p></div>
