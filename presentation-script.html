@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presenter Script — Stripe × The Home Depot</title>
+<style>
+  :root{
+    --ink:#1a1a1a; --muted:#6b6b6b; --line:#e3e0da; --paper:#faf8f4;
+    --do:#0b6b53; --do-bg:#e9f5f0; --say:#1a1a1a; --note:#9a5b00; --note-bg:#fdf3e2;
+    --accent:#b94700;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font:18px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px; margin:0 auto; padding:40px 28px 120px}
+  header.top{border-bottom:3px solid var(--ink); padding-bottom:18px; margin-bottom:8px}
+  h1{font-size:30px; line-height:1.2; margin:0 0 6px}
+  .sub{font-size:18px; color:var(--muted); margin:0 0 14px}
+  .core{display:inline-block; background:var(--ink); color:#fff; padding:6px 12px; border-radius:6px; font-weight:600; font-size:16px}
+  .howto, .through{font-size:16px; color:var(--muted); background:#fff; border:1px solid var(--line);
+    border-radius:8px; padding:12px 16px; margin:14px 0}
+  .through{color:var(--ink); font-style:italic}
+  section.beat{background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:22px 24px; margin:26px 0; box-shadow:0 1px 0 rgba(0,0,0,.02)}
+  .sec-h{display:flex; align-items:baseline; gap:12px; border-bottom:1px solid var(--line);
+    padding-bottom:12px; margin-bottom:16px}
+  .num{font-size:34px; font-weight:800; color:var(--accent); line-height:1; min-width:48px}
+  .sec-t{font-size:22px; font-weight:700; margin:0}
+  .time{margin-left:auto; font-size:14px; color:var(--muted); white-space:nowrap; font-weight:600}
+  .big{font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); font-weight:700}
+  .do{background:var(--do-bg); border-left:4px solid var(--do); border-radius:6px;
+    padding:10px 14px; margin:12px 0; font-size:16px; color:#0a4a3a}
+  .do .lbl{font-weight:800; color:var(--do); letter-spacing:.04em; font-size:13px; display:block; margin-bottom:2px}
+  .note{background:var(--note-bg); border-left:4px solid var(--note); border-radius:6px;
+    padding:12px 14px; margin:14px 0; font-size:16px; color:#5a3800}
+  .note .lbl{font-weight:800; color:var(--note); letter-spacing:.04em; font-size:13px; display:block; margin-bottom:3px}
+  ul.say{list-style:none; padding:0; margin:8px 0 0}
+  ul.say li{position:relative; padding:10px 0 10px 26px; font-size:20px; line-height:1.5; border-bottom:1px solid #f1eee8}
+  ul.say li:last-child{border-bottom:none}
+  ul.say li::before{content:"“"; position:absolute; left:0; top:6px; font-size:26px; color:var(--accent); font-weight:700}
+  ul.say li.plain::before{content:"›"; font-size:18px; top:11px; color:var(--muted)}
+  .cue{color:var(--do); font-weight:700; font-style:italic}
+  .target{color:var(--accent); font-weight:800; font-size:22px; vertical-align:middle}
+  strong{color:#000}
+  em{color:#333}
+  .qa li{font-size:17px; padding-left:0}
+  .qa li::before{content:""}
+  .qa .q{font-weight:700; color:var(--accent); display:block; margin-top:14px}
+  .qa .a{display:block; margin:4px 0 0 14px}
+  code{background:#f2efe9; padding:1px 5px; border-radius:4px; font-size:15px}
+  .practice li{font-size:17px}
+  hr.sep{border:none; border-top:1px dashed var(--line); margin:30px 0}
+  /* Sticky section nav */
+  nav.toc{position:sticky; top:0; background:var(--paper); padding:10px 0; border-bottom:1px solid var(--line);
+    z-index:5; font-size:13px; display:flex; flex-wrap:wrap; gap:6px}
+  nav.toc a{text-decoration:none; color:var(--muted); border:1px solid var(--line); border-radius:20px;
+    padding:3px 10px; background:#fff}
+  nav.toc a:hover{color:#fff; background:var(--accent); border-color:var(--accent)}
+  @media print{
+    body{background:#fff; font-size:13px}
+    nav.toc{display:none}
+    section.beat{box-shadow:none; break-inside:avoid; page-break-inside:avoid}
+    ul.say li{font-size:15px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <h1>Presenter Script — Stripe × The Home Depot</h1>
+    <p class="sub">~45 min · live page walkthrough</p>
+    <span class="core">Core message: “I build reusable systems, not one-offs.”</span>
+    <div class="howto"><strong>How to use this:</strong> <span class="cue">Green = what you DO</span> (click/show). Quoted lines = what you SAY, in your own voice. <span class="target">🎯</span> marks where the core message lands. Timings are guides.</div>
+    <div class="through"><strong>The through-line to repeat:</strong> “Everything you’re seeing was built once and is designed to be reused — for the next Home Depot conversation, and for the next customer entirely.”</div>
+  </header>
+
+  <nav class="toc">
+    <a href="#s0">0 · Open</a>
+    <a href="#s1">1 · Thesis</a>
+    <a href="#s2">2 · The Room</a>
+    <a href="#s3">3 · Five pieces</a>
+    <a href="#s4">4 · 2026 plan</a>
+    <a href="#s5">5 · Briefing</a>
+    <a href="#s6">6 · Pre/Post</a>
+    <a href="#s7">7 · Format+security</a>
+    <a href="#s8">8 · Payoff</a>
+    <a href="#s9">9 · Close</a>
+    <a href="#qa">Q&amp;A</a>
+    <a href="#notes">Notes</a>
+  </nav>
+
+  <section class="beat" id="s0">
+    <div class="sec-h"><div class="num">0</div><h2 class="sec-t">Open — before you share the screen</h2><span class="time">2 min</span></div>
+    <ul class="say">
+      <li>Before I show you anything — I want to tell you the one idea I hope you remember when I’m done. I don’t think the job is to make a great deck for The Home Depot. I think the job is to build a <em>system</em> that makes every customer engagement great — and then prove it by building one. So what I’m about to show you is both: a real engagement plan for The Home Depot, and the reusable engine underneath it. <span class="target">🎯</span></li>
+      <li>One honest note up front: this is a fictional exercise built entirely from public information. Everything about The Home Depot comes from their own earnings and newsroom; everything about Stripe from stripe.com.</li>
+      <li>I built it as a web page, not a slideshow — and I’ll explain why that choice matters later, because it’s part of the reusability argument.</li>
+    </ul>
+    <div class="do"><span class="lbl">DO</span>Now share screen, open the live URL.</div>
+  </section>
+
+  <section class="beat" id="s1">
+    <div class="sec-h"><div class="num">1</div><h2 class="sec-t">The thesis — set altitude</h2><span class="time">3 min</span></div>
+    <div class="do"><span class="lbl">DO</span>Land on the hero, scroll slowly to Section 01.</div>
+    <ul class="say">
+      <li>Here’s the whole argument in one line: The Home Depot is becoming one connected company across the DIY shopper, the contractor, the store, and the screen. Their payments should reflect this.</li>
+      <li>‘One Home Depot,’ as their CEO said. I started from <em>their</em> strategy and mapped Stripe to it. That’s the first principle: <strong>start from the customer.</strong></li>
+    </ul>
+  </section>
+
+  <section class="beat" id="s2">
+    <div class="sec-h"><div class="num">2</div><h2 class="sec-t">The Room — customization made literal</h2><span class="time">5 min</span></div>
+    <div class="do"><span class="lbl">DO</span>Scroll to Section 02. <strong>Click through 2–3 executives</strong> in the role-switcher (start with Fran Bell the CTO, then the CFO, then the contractor-business lead). Let them watch the panel change each time.</div>
+    <div class="note"><span class="lbl">NOTE TO SELF</span>Build a core executive content and messaging toolkit, starting with priority personas (CMO, CHRO, CFO). Initial asset set: roundtable discussion guide, invitation and follow-up copy, a high-level messaging framework, services/solutions one-pagers, case studies where possible.</div>
+    <ul class="say">
+      <li>The brief asked how content gets customized per audience. Instead of telling you, I’ll show you. Same briefing, same five content pieces — but watch what changes when I click a different leader.</li>
+      <li><span class="cue">(Click CTO)</span> For the new CTO, payments data is the fuel for the AI experience she’s been hired to build.</li>
+      <li><span class="cue">(Click CFO)</span> For the CFO, same story, now it’s margin, cost-to-serve, and recovered revenue.</li>
+      <li><span class="cue">(Click contractor lead)</span> For the contractor-business leader, it’s about winning and keeping Pros. <span class="target">🎯</span></li>
+    </ul>
+  </section>
+
+  <section class="beat" id="s3">
+    <div class="sec-h"><div class="num">3</div><h2 class="sec-t">The five content pieces — the engine</h2><span class="time">5 min</span></div>
+    <div class="do"><span class="lbl">DO</span>Scroll to Section 03. Walk the five cards. Point at the “Built as / Kept fresh / Lives in” strips.</div>
+    <ul class="say">
+      <li>Here’s the engine itself. Every executive meeting needs the same five things: a story about the customer’s business, a demo, proof someone like them did it, a point of view on what’s coming, and something to send ahead.</li>
+      <li><span class="cue">(Point at the ops strips)</span> And each one says how it stays current and where it lives. The data story rebuilds from their newest earnings. <span class="target">🎯</span></li>
+    </ul>
+  </section>
+
+  <section class="beat" id="s4">
+    <div class="sec-h"><div class="num">4</div><h2 class="sec-t">The 2026 plan</h2><span class="time">5 min</span></div>
+    <div class="do"><span class="lbl">DO</span>Scroll to Section 04. Click through the four touchpoints (Q1 → Q4).</div>
+    <div class="note"><span class="lbl">⏺ AD-LIB HERE — the customer-first process story</span>Tell how you plan an engagement by starting from the customer, not from a CEO meeting. Worked example: your <strong>2027 event &amp; travel planning doc</strong> — you built the plan around where the customer already is, then placed the touchpoints. Keep it to one example, then move on to the briefing.</div>
+    <ul class="say">
+      <li>The brief asked for a plan with milestones and timelines. This is it — but it’s a plan with an <em>opinion</em>, not a list of options.</li>
+      <li>And here’s a process point I care about: notice Q1 isn’t ‘pitch the EBC.’ It’s a tops-to-tops call where the relationship is already warm and the CEO <em>invites</em> them to the briefing. You earn the briefing — you don’t cold-pitch it. That’s how these actually work.</li>
+    </ul>
+  </section>
+
+  <section class="beat" id="s5">
+    <div class="sec-h"><div class="num">5</div><h2 class="sec-t">The flagship briefing — the depth</h2><span class="time">6 min</span></div>
+    <div class="do"><span class="lbl">DO</span>Click the Q2 touchpoint link → opens <strong>the-briefing.html</strong>. Scroll: the room (1:1 pairings), the wow moments, the agenda.</div>
+    <ul class="say">
+      <li><span class="cue">(Room pairings)</span> Every Home Depot leader has a Stripe counterpart at their level — they should never feel out-ranked.</li>
+      <li><span class="cue">(Wow moments)</span> The wow factor the brief asked for — and it’s built for them specifically: their sales on a live wall, a built-from-scratch origin story that puts both companies’ beginnings side by side, building their actual checkout live in the room.</li>
+      <li><span class="cue">(Agenda)</span> A real day-and-a-half EBC agenda, hour by hour, modeled on how these actually run.</li>
+      <li class="plain">Back to the plan. <span class="cue">(Click ← Back.)</span></li>
+    </ul>
+  </section>
+
+  <section class="beat" id="s6">
+    <div class="sec-h"><div class="num">6</div><h2 class="sec-t">Pre and post — the relationship, not the event</h2><span class="time">5 min</span></div>
+    <div class="do"><span class="lbl">DO</span>Section 05 (click 2–3 of the step tabs), then Section 06 (point at the 3-signal feedback list).</div>
+    <ul class="say">
+      <li><span class="cue">(Pre, click tabs)</span> Before any touchpoint: align our own team, gather what we can’t Google, and prep them differently for in-person vs. virtual. The internal cast — account exec, solutions engineer, product marketing, exec engagement leads, the sponsor.</li>
+      <li>On gathering info — Salesforce gives the facts, but the account team and exec engagement leads give the truth: who really decides, what they actually care about.</li>
+      <li><span class="cue">(Post, point at feedback)</span> And feedback isn’t one survey. Three signals, weakest to strongest: a pulse survey, the 1:1 calls where the truth lives, and the only one that fully counts — did they actually take the next step. Behavior beats sentiment.</li>
+    </ul>
+  </section>
+
+  <section class="beat" id="s7">
+    <div class="sec-h"><div class="num">7</div><h2 class="sec-t">The format + security — the meta-thinking</h2><span class="time">4 min</span></div>
+    <div class="do"><span class="lbl">DO</span>Section 07 (the two-column “why a page / how we’d secure it”).</div>
+    <ul class="say">
+      <li>I made a deliberate choice to build this as a web page, not a deck. Here’s why it matters in the AI age: a page like this can be generated and personalized per customer in minutes; it updates at a link instead of being a fixed file you email around; and the reader picks their own view, so a CFO sees the CFO’s version and a CTO sees theirs, instead of everyone getting the same slides.</li>
+      <li>But I’d rather name the hard parts than pretend they’re solved — so the other column is how you’d run this securely at Stripe: not a public link for a real customer, nothing confidential baked into the page, a real security review. A deck is ‘safe’ because it’s inert; this is more powerful but asks more of us. That’s a tradeoff worth making on purpose.</li>
+    </ul>
+  </section>
+
+  <section class="beat" id="s8">
+    <div class="sec-h"><div class="num">8</div><h2 class="sec-t">The payoff — reusability + the dashboard <span class="target">🎯 THE BIG ONE</span></h2><span class="time">6 min</span></div>
+    <div class="do"><span class="lbl">DO</span>Section 08 (Beyond), then <strong>open dashboard.html</strong> (separate tab — note it’s not in the public repo yet).</div>
+    <ul class="say">
+      <li>Which brings me back to where I started about how we can develop a taxonomy of reusable content.</li>
+      <li><span class="cue">(Open dashboard)</span> I went and mapped where Stripe plays by industry — honestly, since Stripe is private, there’s no 10-K, so this is a qualitative landscape, not audited numbers.</li>
+      <li><span class="cue">(Scroll to the reuse section)</span> The demo is two layers: the payment flows underneath, which are the same for any retailer, and a thin layer on top that’s specific to The Home Depot. The flows carry over as-is.</li>
+      <li>And here’s the tell that proves it ports: <strong>The Home Depot runs its cards through Citi today, not Stripe.</strong> So my demo isn’t describing their current setup — it’s selling a <em>future state</em> built on generic Stripe primitives. That’s exactly why the same demo works for the next customer.</li>
+      <li><span class="cue">(point at the two ranked columns)</span> I ranked where it travels. <strong>Lowe’s is the lowest-friction next retailer</strong> — the only other big-box carrying both halves, the consumer side and the contractor-on-terms side. And the lowest-friction adjacent vertical is <strong>building-materials distribution</strong> — Beacon, Watsco — where both my demo’s patterns are publicly documented, sometimes word-for-word.</li>
+      <li>So what you’ve really seen today isn’t a Home Depot plan. It’s a reusable content strategy, with Home Depot as the example. <span class="target">🎯</span></li>
+    </ul>
+  </section>
+
+  <section class="beat" id="s9">
+    <div class="sec-h"><div class="num">9</div><h2 class="sec-t">Close</h2><span class="time">2 min</span></div>
+    <ul class="say">
+      <li>To bring it home: I started from the customer, not from us.</li>
+      <li>This is how I’d work: build reusable content, make every customer engagement feel customized, and never start from a blank page again.</li>
+      <li>I’d love your questions.</li>
+    </ul>
+  </section>
+
+  <hr class="sep">
+
+  <section class="beat qa" id="qa">
+    <div class="sec-h"><div class="num">Q</div><h2 class="sec-t">Q&amp;A — likely questions + crisp answers</h2></div>
+    <ul class="say">
+      <li><span class="q">“How did you actually build this / how is it hosted?”</span>
+        <span class="a"><em>One-liner:</em> It’s a single HTML file in a GitHub repository. GitHub has a free feature called Pages that serves whatever’s in the repo as a live website. So the file <em>is</em> the site — no separate build. I update the file, the URL updates itself.</span>
+        <span class="a"><em>If they want more:</em> The repo is like a folder in the cloud. GitHub Pages publishes it. <code>index.html</code> is special — it’s the default page a server shows at the base URL, like a store address taking you to the front door. The other pages — the briefing, the pre-read — are just more files in the same folder, each with its own URL (<code>…/the-briefing.html</code>), and they link to each other by filename.</span>
+        <span class="a"><em>Key point (clears the common confusion):</em> the pages aren’t <em>generated</em> from index.html — they’re <strong>siblings</strong>, separate files sitting next to each other. <code>index.html</code> is just the one shown by default.</span>
+        <span class="a"><em>If technical (“what’s the build process?”):</em> There isn’t one — plain HTML, styling and fonts embedded in the file, no framework, no compile step. GitHub Pages serves the static files as-is. That’s why it’s portable and low-risk.</span>
+        <span class="a"><em>Your live setup (for reference):</em> repo <code>danielle-chauncey/thd-stripe-engagement</code>, branch <code>main</code>, root folder, 4 HTML files + README, URL <code>https://danielle-chauncey.github.io/thd-stripe-engagement/</code>.</span>
+      </li>
+      <li><span class="q">“Could Stripe really use this with a real customer?”</span>
+        <span class="a">Not as a public link — behind SSO or an expiring link, nothing confidential in the page itself, security-reviewed. Section 7 walks through it.</span></li>
+      <li><span class="q">“Isn’t a fictional plan risky without real account data?”</span>
+        <span class="a">Everything’s public-sourced and I flag every assumption. The point isn’t the specific numbers — it’s the repeatable method.</span></li>
+      <li><span class="q">“What would you do differently with real Stripe data?”</span>
+        <span class="a">Gather the four things only the account team and Home Depot can tell me — their real stack, the contractor revenue, their definition of friction — and the content auto-updates from there.</span></li>
+    </ul>
+  </section>
+
+  <section class="beat practice" id="notes">
+    <div class="sec-h"><div class="num">★</div><h2 class="sec-t">Practice notes</h2></div>
+    <ul class="say">
+      <li class="plain">The core message (“reusable system, not a one-off”) should land at the open, in 2/3/4, and twice at the dashboard. Keep coming back to it so the talk doesn’t turn into a tour of features.</li>
+      <li class="plain">Slowest, most confident delivery at: the role-switcher clicks (pause and let them watch) and the dashboard payoff.</li>
+      <li class="plain">GitHub-Pages explanation: done (in Q&amp;A). 2027-event customer-first example: ad-libbed live at Section 5 — don’t script it, just have the one beat ready.</li>
+    </ul>
+  </section>
+
+</div>
+</body>
+</html>
